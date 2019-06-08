@@ -1,0 +1,19 @@
+<% if flash.any? %>
+  <div id="alert">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <div><%= value %></div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#alert').animate({ opacity: 1 }, '0.5s');
+
+    setTimeout(function() {
+      $('#alert').animate({ height: 0, opacity: 0 }, '0.5s');
+    }, 3000);
+  });
+</script>

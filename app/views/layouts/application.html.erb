@@ -8,13 +8,14 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class="container">
-    <% if logged_in %>
-      <div class="row">
-        <%= link_to "Leave", sessions_path, method: :delete %>
-      </div>
-    <% end %>
+  <body>
+    <%= render "layouts/nav" %>
 
-    <%= yield %>
+    <div class="container">
+      <%= render "layouts/alerts" %>
+      <div class="pt-100">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

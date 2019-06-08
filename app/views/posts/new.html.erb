@@ -1,0 +1,13 @@
+<div class="text-center">
+  <%= form_tag posts_path do %>
+    <div>
+      <%= text_field_tag :title, @post.title, placeholder: "Title", class: "u-full-width", autocomplete: "off" %>
+    </div>
+
+    <div>
+      <%= text_area_tag :content, @post.content, placeholder: "Content", class: "u-full-width h-300", autocomplete: "off" %>
+    </div>
+
+    <%= submit_tag "Save", class: "button" %>
+  <% end %>
+</div>

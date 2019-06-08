@@ -1,2 +1,13 @@
-<% if @posts.empty? %>
-<% end %>
+<div class="text-center">
+  <%= link_to "New journal entry", new_post_path, class: "button" %>
+
+  <div>
+    <% if @posts.any? %>
+      <ul>
+        <% @posts.each do |p| %>
+          <li><%= p.title %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

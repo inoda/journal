@@ -4,9 +4,24 @@
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
 
 /* Spacing */
 
-.mt-50 {
-  margin-top: 50px;
+.pt-100 {
+  padding-top: 100px;
+}
+
+
+/* Size */
+
+.h-300 {
+  min-height: 300px;
 }

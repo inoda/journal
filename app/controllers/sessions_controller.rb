@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
   def create
     if params[:username] == ENV['USERNAME'] && params[:password] == ENV['PASSWORD']
       session[:logged_in] = true
+    else
+      flash[:error] = "Incorrect login"
     end
 
     redirect_to :root

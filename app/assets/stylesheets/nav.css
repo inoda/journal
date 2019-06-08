@@ -1,0 +1,9 @@
+.nav {
+  background: #f8f9fa;
+  padding: 10px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-between;
+}
