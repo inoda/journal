@@ -1,5 +1,13 @@
-<%= form_tag sessions_path do %>
-  <%= password_field_tag(:password) %>
+<div class="text-center row six columns offset-by-three mt-50">
+  <%= form_tag sessions_path do %>
+    <div>
+      <%= text_field_tag :username, nil, placeholder: "Username", class: "u-full-width" %>
+    </div>
 
-  <%= submit_tag("Submit") %>
-<% end %>
+    <div>
+      <%= password_field_tag :password, nil, placeholder: "Password", class: "u-full-width" %>
+    </div>
+
+    <%= submit_tag "Submit", class: "u-full-width button-primary" %>
+  <% end %>
+</div>

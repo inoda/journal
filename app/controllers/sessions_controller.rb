@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:password] == ENV['PASSWORD']
+    if params[:username] == ENV['USERNAME'] && params[:password] == ENV['PASSWORD']
       session[:logged_in] = true
     end
 
