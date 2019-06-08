@@ -14,7 +14,6 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'listen', '~> 3.1.5' # Required by Rails
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails', groups: [:development, :test]
 end
 
