@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <% if logged_in %>
+      <%= link_to "Leave", sessions_path, method: :delete %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

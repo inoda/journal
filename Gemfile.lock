@@ -43,6 +43,10 @@ GEM
     byebug (11.0.1)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    dotenv (2.6.0)
+    dotenv-rails (2.6.0)
+      dotenv (= 2.6.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.11.1)
@@ -133,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  dotenv-rails
   listen (~> 3.1.5)
   pg (>= 0.18, < 2.0)
   puma (~> 3.7)
