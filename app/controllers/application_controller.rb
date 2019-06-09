@@ -7,4 +7,9 @@ class ApplicationController < ActionController::Base
   def require_logged_in
     redirect_to root_path and return if !session[:logged_in]
   end
+
+  def ensure_sane_page
+    return if !params[:page]
+    params[:page] = 1 if params[:page].to_i < 1 || params[:page].to_i > 999999999999999999
+  end
 end

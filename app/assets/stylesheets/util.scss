@@ -25,6 +25,11 @@
   white-space: pre-wrap;
 }
 
+a.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 
 /* Spacing */
 

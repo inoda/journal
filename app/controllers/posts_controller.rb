@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  before_action :ensure_sane_page, only: [:index]
+
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Pagination.new(Post.order(created_at: :desc), params[:page])
   end
 
   def new

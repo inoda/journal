@@ -1,0 +1,33 @@
+<div class="paginator mt-30">
+  <div>
+    Showing <strong><%= displayed_items_lower_bound %></strong>-<strong><%= displayed_items_upper_bound %></strong> of <strong><%= total_items %></strong>
+  </div>
+
+  <ol>
+    <% if current_page > 1 %>
+      <li>
+        <%= link_to "Prev", page: current_page - 1 %>
+      </li>
+    <% else %>
+      <li>
+        <a href="#" class="disabled">Prev</a>
+      </li>
+    <% end %>
+
+    <% displayed_page_numbers.each do |n| %>
+      <li class="<%= 'active' if current_page == n %>">
+        <%= link_to n, page: n %>
+      </li>
+    <% end %>
+
+    <% if current_page < total_pages %>
+      <li>
+        <%= link_to "Next", page: current_page + 1 %>
+      </li>
+    <% else %>
+      <li>
+        <a href="#" class="disabled">Next</a>
+      </li>
+    <% end %>
+  </ol>
+</div>
