@@ -8,6 +8,10 @@
       <%= text_area_tag :content, @post.content, placeholder: "Content", class: "u-full-width h-300", autocomplete: "off" %>
     </div>
 
+    <div>
+      <%= text_field_tag :tags, @post.tags_list, placeholder: "Tags separated by commas (Example: meditations, new ideas, self improvement)", class: "u-full-width", autocomplete: "off" %>
+    </div>
+
     <%= submit_tag "Save", class: "button" %>
   <% end %>
 </div>

@@ -1,5 +1,11 @@
 <div>
   <h3><%= @post.title %></h3>
+
+  <h6><%= @post.created_at.strftime("%m/%d/%Y") %></h6>
+
   <p class="text-whitespace"><%= @post.content %></p>
+
+  <h6>Tags: <%= @post.tags_list %></h6>
+
   <div class="pt-100"></div>
 </div>

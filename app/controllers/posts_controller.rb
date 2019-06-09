@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :ensure_sane_page, only: [:index]
 
   def index
-    @posts = Pagination.new(Post.order(created_at: :desc), params[:page])
+    q = Post.includes(:tags).order(created_at: :desc)
+    @posts = Pagination.new(q, params[:page])
   end
 
   def new
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(title: params[:title], content: params[:content])
+    tags_param.each { |tag| @post.tags << Tag.find_or_create_by(label: tag) }
 
     if @post.save
       flash[:success] = "Entry saved"
@@ -41,6 +43,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by_id(params[:id])
+    @post.post_tags.destroy_all
+    tags_param.each { |tag| @post.tags << Tag.find_or_create_by(label: tag) }
 
     if @post.update(title: params[:title], content: params[:content])
       flash[:success] = "Entry saved"
@@ -54,12 +58,18 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find_by_id(params[:id])
 
-    if post && post.delete
+    if post && post.destroy
       flash[:success] = "Entry deleted"
     else
       flash[:error] = "Issue deleting entry"
     end
 
     redirect_to posts_path
+  end
+
+  private
+
+  def tags_param
+    params[:tags].split(",").map(&:strip).reject { |t| t.blank? }
   end
 end

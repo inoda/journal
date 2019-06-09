@@ -9,6 +9,8 @@
             <strong><%= p.title %></strong>
             <br/>
             <%= p.created_at.strftime("%m/%d/%Y") %>
+            <br/>
+            <%= render "tags_list", post: p %>
           </div>
 
           <div class="">
