@@ -14,17 +14,25 @@ system to categorize/search for entries.
 Since journals are really personal and you can't hide your website under the bed
 like you can with a physical notebook, there a couple of security measures built in.
 
-- Even though it is a 1 user app, you still set up a login with a username and password.
+- Even though it is a 1 user app, you still set up a login with a username and password (both are hashed).
 - You get an email notification when a login occurs.
 - All journal entries/titles/tags are encrypted at the database level using
 [OpenSSL::Cipher](https://ruby-doc.org/stdlib-2.4.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html).
 
 ## Hosting your own
 
-### Environment variables
+### Set up environment variables
 
 - `CIPHER_KEY`: Secret key used in encrypting. It needs to be 32 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(32))`.
 - `TAG_CIPHER_IV`: This is used with to make sure that tag IVs are
 the same. This allows us to search on them. It needs to be 16 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(16))`.
+- `ALERT_EMAIL` (optional): If this is provided, the email address will
+get notified when there is a new login.
+
+### Create a user
+
+- Via Rails console: `User.create!(username: "...", password: "...")`
+
+That's it! You're good to go.

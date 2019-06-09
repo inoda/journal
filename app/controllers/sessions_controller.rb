@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:username] == ENV['USERNAME'] && params[:password] == ENV['PASSWORD']
+    if AuthManager.authenticate(params[:username], params[:password])
       session[:logged_in] = true
     else
       flash[:error] = "Incorrect login"
