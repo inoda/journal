@@ -6,7 +6,7 @@
   <div class="flex-row">
     <%= form_tag posts_path, method: :get do %>
       <%= text_field_tag :search, params[:search], placeholder: "", autocomplete: "off" %>
-      <%= submit_tag "Search", class: "button" %>
+      <%= submit_tag "Search for tag", class: "button" %>
     <% end %>
 
     <%= link_to "New joural entry", new_post_path, class: "button" %>
