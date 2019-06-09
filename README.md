@@ -1,24 +1,30 @@
-# README
+### About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is an attempt to make myself journal more
+consistently. I find it much easier to gather my thoughts
+with a keyboard. Having an online journal also means that
+I don't need to remember to bring it with me everywhere. The app
+is meant to be used by 1 person, and you can host easily your own instance.
 
-Things you may want to cover:
+The app is pretty simple: basic CRUD for journal entries and a tagging
+system to categorize/search for entries.
 
-* Ruby version
+### Security
 
-* System dependencies
+Since journals are really personal and you can't hide your website under the bed
+like you can with a physical notebook, there a couple of security measures built in.
 
-* Configuration
+- Even though it is a 1 user app, you still set up a login with a username and password.
+- You get an email notification when a login occurs.
+- All journal entries/titles/tags are encrypted at the database level using
+[OpenSSL::Cipher](https://ruby-doc.org/stdlib-2.4.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html).
 
-* Database creation
+## Hosting your own
 
-* Database initialization
+### Environment variables
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- `CIPHER_KEY`: Secret key used in encrypting. It needs to be 32 bytes base 64 encoded.
+  - `Base64.encode64(SecureRandom.random_bytes(32))`.
+- `TAG_CIPHER_IV`: This is used with to make sure that tag IVs are
+the same. This allows us to search on them. It needs to be 16 bytes base 64 encoded.
+  - `Base64.encode64(SecureRandom.random_bytes(16))`.

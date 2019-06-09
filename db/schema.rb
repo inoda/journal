@@ -26,16 +26,16 @@ ActiveRecord::Schema.define(version: 20190608152033) do
 
   create_table "posts", force: :cascade do |t|
     t.binary "title", null: false
-    t.binary "content"
-    t.binary "title_iv"
-    t.binary "content_iv"
+    t.binary "content", null: false
+    t.binary "title_iv", null: false
+    t.binary "content_iv", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
     t.binary "label", null: false
-    t.binary "label_iv"
+    t.binary "label_iv", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

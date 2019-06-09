@@ -5,7 +5,7 @@ class Tag < ApplicationRecord
   has_many :posts, through: :post_tags
 
   def self.encrypted_label(val)
-    Encryptor.encrypt(val, ENV['TAG_CIPHER_IV'])[0]
+    Encryptor.encrypt(val, Base64.decode64(ENV['TAG_CIPHER_IV']))[0]
   end
 
   def decrypted_label
@@ -13,7 +13,7 @@ class Tag < ApplicationRecord
   end
 
   def label=(value)
-    encrypted, iv = Encryptor.encrypt(value, ENV['TAG_CIPHER_IV'])
+    encrypted, iv = Encryptor.encrypt(value, Base64.decode64(ENV['TAG_CIPHER_IV']))
     self.label_iv = iv
     super(encrypted)
   end

@@ -31,6 +31,6 @@ class Post < ApplicationRecord
   private
 
   def ensure_title
-    self.title = "Untitled"
+    self.title = "Untitled" unless self.title.present?
   end
 end

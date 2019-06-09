@@ -6,6 +6,13 @@
   align-items: center;
 }
 
+@media (max-width: 750px) {
+  .flex-row-collapse {
+    display: block;
+    text-align: center;
+  }
+}
+
 
 /* Text */
 
