@@ -2,8 +2,8 @@
   <%= link_to "New journal entry", new_post_path, class: "button" %>
 
   <div class="text-left mt-30">
-    <% if @posts.items.any? %>
-      <% @posts.items.each do |p| %>
+    <% if @posts.any? %>
+      <% @posts.each do |p| %>
         <div class="mt-10 flex-row">
           <div class="">
             <strong><%= p.title %></strong>
@@ -23,7 +23,7 @@
         </div>
       <% end %>
 
-      <%= pager(@posts, params[:page]) %>
+      <%= pager(@posts) %>
     <% end %>
   </div>
 </div>

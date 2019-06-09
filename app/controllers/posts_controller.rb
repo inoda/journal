@@ -2,8 +2,7 @@ class PostsController < ApplicationController
   before_action :ensure_sane_page, only: [:index]
 
   def index
-    q = Post.includes(:tags).order(created_at: :desc).search(params[:search])
-    @posts = Pagination.new(q, params[:page])
+    @posts = Post.includes(:tags).order(created_at: :desc).search(params[:search]).paginate(params[:page])
   end
 
   def new
