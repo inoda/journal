@@ -7,11 +7,13 @@ module Paginator
       @items_per_page = items_per_page
 
       def page
-        !@page_requested.nil? && @page_requested.to_i > 0 ? @page_requested.to_i : 1
+        return 1 if @page_requested.nil? || @page_requested.to_i < 1
+        total_pages < @page_requested.to_i ? total_pages : @page_requested.to_i
       end
 
       def per_page
-        !@items_per_page.nil? && @items_per_page.to_i > 0 ? @items_per_page.to_i : 10
+        return 10 if @items_per_page.nil? || @items_per_page.to_i < 1
+        @items_per_page.to_i
       end
 
       def total_items

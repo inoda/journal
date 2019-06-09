@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  before_action :ensure_sane_page, only: [:index]
-
   def index
     @posts = Post.includes(:tags).order(created_at: :desc).search(params[:search]).paginate(params[:page])
   end
