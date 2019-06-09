@@ -5,7 +5,7 @@
 
   <p class="text-whitespace"><%= @post.content %></p>
 
-  <h6>Tags: <%= @post.tags_list %></h6>
+  <div><%= render "tags_list", post: @post %></div>
 
   <div class="pt-100"></div>
 </div>

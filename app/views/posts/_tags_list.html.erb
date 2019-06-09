@@ -1,5 +1,5 @@
 <% if post.tags.any? %>
-  Tags: <% post.tags.each_with_index do |t, i| %>
+  Tags: <% post.tags.sort_by(&:label).each_with_index do |t, i| %>
     <%= link_to t.label, posts_path(search: t.label) %> <%= "|" unless i == post.tags.length - 1 %>
   <% end %>
 <% end %>

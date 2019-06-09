@@ -4,7 +4,5 @@ class Post < ApplicationRecord
   has_many :post_tags, dependent: :delete_all
   has_many :tags, through: :post_tags
 
-  def tags_list
-    tags.map(&:label).join(", ")
-  end
+  scope :search, -> q { left_outer_joins(:tags).where("posts.title ILIKE ? OR tags.label ILIKE ?", "%#{q}%", "%#{q}%") if !q.nil? && q.strip.present? }
 end
