@@ -352,8 +352,7 @@ figure,
 table,
 p,
 ul,
-ol,
-form {
+ol {
   margin-bottom: 2.5rem; }
 
 

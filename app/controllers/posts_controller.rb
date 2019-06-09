@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+    @posts_exist = Post.count > 0
     @posts = Post.includes(:tags).order(created_at: :desc).search(params[:search]).paginate(params[:page])
   end
 

@@ -1,29 +1,38 @@
-<div class="text-center">
-  <%= link_to "New journal entry", new_post_path, class: "button" %>
-
-  <div class="text-left mt-30">
-    <% if @posts.any? %>
-      <% @posts.each do |p| %>
-        <div class="mt-10 flex-row">
-          <div class="">
-            <strong><%= p.title %></strong>
-            <br/>
-            <%= p.created_at.strftime("%m/%d/%Y") %>
-            <br/>
-            <%= render "tags_list", post: p %>
-          </div>
-
-          <div class="">
-            <%= link_to "Read", post_path(p) %>
-            |
-            <%= link_to "Edit", edit_post_path(p) %>
-            |
-            <%= link_to "Delete", post_path(p), method: :delete, data: { confirm: "Are you sure?" } %>
-          </div>
-        </div>
-      <% end %>
-
-      <%= pager(@posts, [:search]) %>
-    <% end %>
+<% if !@posts_exist %>
+  <div class="text-center">
+    <%= link_to "New journal entry", new_post_path, class: "button" %>
   </div>
-</div>
+<% else %>
+  <div class="flex-row">
+    <%= form_tag posts_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "", autocomplete: "off" %>
+      <%= submit_tag "Search", class: "button" %>
+    <% end %>
+
+    <%= link_to "New journal entry", new_post_path, class: "button" %>
+  </div>
+
+  <div class="mt-30">
+    <% @posts.each do |p| %>
+      <div class="mt-10 flex-row">
+        <div class="">
+          <strong><%= p.title %></strong>
+          <br/>
+          <%= p.created_at.strftime("%m/%d/%Y") %>
+          <br/>
+          <%= render "tags_list", post: p %>
+        </div>
+
+        <div class="">
+          <%= link_to "Read", post_path(p) %>
+          |
+          <%= link_to "Edit", edit_post_path(p) %>
+          |
+          <%= link_to "Delete", post_path(p), method: :delete, data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= pager(@posts, [:search]) %>
+  </div>
+<% end %>
