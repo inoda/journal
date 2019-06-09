@@ -20,8 +20,8 @@
           </div>
         </div>
       <% end %>
+
+      <%= pager(@posts, params[:page]) %>
     <% end %>
   </div>
-
-  <%= pager(@posts, params[:page]) %>
 </div>
