@@ -1,5 +1,5 @@
 module PaginationHelper
-  def pager(data)
+  def pager(data, keep_params = {})
     displayed_pages_lower_bound = 0;
     displayed_pages_upper_bound = 0;
 
@@ -17,6 +17,7 @@ module PaginationHelper
     end
 
     data = {
+      keep_params: keep_params,
       current_page: data.page,
       total_pages: data.total_pages,
       displayed_items_lower_bound: data.page == 1 ? 1 : ((data.page - 1) * data.per_page) + 1,

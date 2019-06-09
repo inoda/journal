@@ -6,7 +6,7 @@
   <ol>
     <% if current_page > 1 %>
       <li>
-        <%= link_to "Prev", page: current_page - 1 %>
+        <%= link_to "Prev", params.permit(keep_params).merge(page: current_page - 1) %>
       </li>
     <% else %>
       <li>
@@ -16,13 +16,13 @@
 
     <% displayed_page_numbers.each do |n| %>
       <li class="<%= 'active' if current_page == n %>">
-        <%= link_to n, page: n %>
+        <%= link_to n, params.permit(keep_params).merge(page: n) %>
       </li>
     <% end %>
 
     <% if current_page < total_pages %>
       <li>
-        <%= link_to "Next", page: current_page + 1 %>
+        <%= link_to "Next", params.permit(keep_params).merge(page: current_page + 1) %>
       </li>
     <% else %>
       <li>
