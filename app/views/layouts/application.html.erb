@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body class="<%= 'login' if !logged_in %>">
     <%= render "layouts/nav" %>
 
     <div class="container">

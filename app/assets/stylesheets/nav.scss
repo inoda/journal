@@ -1,9 +1,15 @@
 .nav {
-  background: #f8f9fa;
+  background: #f8f8f6;
   padding: 10px;
 
   .nav-items {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  .art img {
+    max-width: 50px;
+    padding-top: 4px;
   }
 }
