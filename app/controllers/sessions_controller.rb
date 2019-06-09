@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 
   def create
     if AuthManager.authenticate(params[:username], params[:password])
+      ApplicationMailer.send_login_alert(request.remote_ip).deliver
       session[:logged_in] = true
     else
       flash[:error] = "Incorrect login"

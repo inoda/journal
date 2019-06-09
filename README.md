@@ -21,18 +21,28 @@ like you can with a physical notebook, there a couple of security measures built
 
 ## Hosting your own
 
+I'd recommend using [Heroku](https://heroku.com) since it's super simple to deploy a
+Rails app and set up a SendGrid mailer.
+
 ### Set up environment variables
 
+###### Required:
 - `CIPHER_KEY`: Secret key used in encrypting. It needs to be 32 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(32))`.
 - `TAG_CIPHER_IV`: This is used with to make sure that tag IVs are
 the same. This allows us to search on them. It needs to be 16 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(16))`.
-- `ALERT_EMAIL` (optional): If this is provided, the email address will
-get notified when there is a new login.
+
+###### For login email alerts:
+- `ALERT_EMAIL_RECIPIENT`: Where the alert gets sent to. If this
+is missing, emailing will be skipped.
+- `SENDGRID_USERNAME`: This is provided by Heroku with the SendGrid add-on.
+- `SENDGRID_PASSWORD`: This is provided by Heroku with the SendGrid add-on.
+- `MAILER_DOMAIN`: E.g. `"https://example.herokuapp.com"`
 
 ### Create a user
 
 - Via Rails console: `User.create!(username: "...", password: "...")`
+  - If you ever need to change your username/password: `User.first.update!(username: "...", password: "...")`
 
 That's it! You're good to go.
