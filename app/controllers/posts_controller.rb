@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:edit, :show, :update, :destroy]
+
   def index
     @posts_exist = Post.count > 0
     @posts = Post.includes(:tags).order(created_at: :desc).search(params[:search]).paginate(params[:page])
@@ -9,28 +11,15 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by_id(params[:id])
-
-    if !@post
-      flash[:error] = "Issue loading post for edit"
-      redirect_to posts_path and return
-    end
   end
 
   def show
-    @post = Post.find_by_id(params[:id])
-
-    if !@post
-      flash[:error] = "Issue loading post for edit"
-      redirect_to posts_path and return
-    end
   end
 
   def create
-    @post = Post.new(title: params[:title], content: params[:content])
-    tags_param.each { |tag| @post.tags << Tag.find_or_create_by(label: tag) }
+    @post = PostManager.create(params[:title], params[:content], tags_param)
 
-    if @post.save
+    if !@post.new_record?
       flash[:success] = "Entry saved"
       redirect_to posts_path
     else
@@ -40,11 +29,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find_by_id(params[:id])
-    @post.post_tags.destroy_all
-    tags_param.each { |tag| @post.tags << Tag.find_or_create_by(label: tag) }
-
-    if @post.update(title: params[:title], content: params[:content])
+    if PostManager.update(@post, params[:title], params[:content], tags_param)
       flash[:success] = "Entry saved"
       redirect_to post_path(@post)
     else
@@ -54,9 +39,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find_by_id(params[:id])
-
-    if post && post.destroy
+    if @post.destroy
       flash[:success] = "Entry deleted"
     else
       flash[:error] = "Issue deleting entry"
@@ -69,5 +52,14 @@ class PostsController < ApplicationController
 
   def tags_param
     params[:tags].split(",").map(&:strip).reject { |t| t.blank? }
+  end
+
+  def find_post
+    @post = Post.find_by_id(params[:id])
+
+    if !@post
+      flash[:error] = "Entry is missing"
+      redirect_to posts_path and return
+    end
   end
 end
