@@ -1,7 +1,11 @@
 .login {
   background: #f8f8f6;
 
-  .art img {
+  .art {
     max-width: 400px;
+
+    img {
+      width: 100%;
+    }
   }
 }

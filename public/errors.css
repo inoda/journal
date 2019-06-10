@@ -10,8 +10,14 @@ body {
   margin-top: 100px;
 }
 
-img {
-  max-width: 300px;
+.art {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.art img {
+  width: 100%;
 }
 
 .return {
