@@ -1,6 +1,7 @@
 ### About
 
-In a nutshell: a private online journal.
+In a nutshell: a private online journal. A more stripped down version of https://penzu.com (and you really own your data
+since you deploy your own instance).
 
 ![main screenshot](./app/assets/images/readme/posts.png)
 
