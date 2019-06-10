@@ -1,5 +1,7 @@
 ### About
 
+In a nutshell: a private online journal.
+
 This project is an attempt to make myself journal more
 consistently. I find it much easier to gather my thoughts
 with a keyboard. Having an online journal also means that
