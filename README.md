@@ -2,6 +2,8 @@
 
 In a nutshell: a private online journal.
 
+![alt text](./app/assets/images/readme/posts.png)
+
 This project is an attempt to make myself journal more
 consistently. I find it much easier to gather my thoughts
 with a keyboard. Having an online journal also means that
@@ -18,6 +20,9 @@ like you can with a physical notebook, there a couple of security measures built
 
 - Even though it is a 1 user app, you still set up a login with a username and password (both are hashed).
 - You get an email notification when a login occurs.
+
+![alt text](./app/assets/images/readme/email_alert.png)
+
 - All journal entries/titles/tags are encrypted at the database level using
 [OpenSSL::Cipher](https://ruby-doc.org/stdlib-2.4.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html).
 

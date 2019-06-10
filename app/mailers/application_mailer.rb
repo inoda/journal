@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "alerts@#{ENV['MAILER_DOMAIN'].split("//")[1]}"
+  default from: "alerts@#{ENV['MAILER_DOMAIN'] ? ENV['MAILER_DOMAIN'].split("//")[1] : ''}"
   layout 'mailer'
 
   def send_login_alert(ip)

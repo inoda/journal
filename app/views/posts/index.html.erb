@@ -4,12 +4,12 @@
   </div>
 <% else %>
   <div class="flex-row flex-row-collapse">
-    <%= form_tag posts_path, method: :get do %>
+    <%= form_tag posts_path, method: :get, class: "mt-10" do %>
       <%= text_field_tag :search, params[:search], placeholder: "", autocomplete: "off" %>
       <%= submit_tag "Search for tag", class: "button" %>
     <% end %>
 
-    <%= link_to "New joural entry", new_post_path, class: "button" %>
+    <%= link_to "New joural entry", new_post_path, class: "button mt-10" %>
   </div>
 
   <div class="mt-30">
