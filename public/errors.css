@@ -1,0 +1,27 @@
+body {
+  background: #f8f8f6;
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2em;
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #222;
+  margin-top: 100px;
+}
+
+img {
+  max-width: 300px;
+}
+
+.return {
+  font-size: 0.9em;
+}
+
+a {
+  color: #1EAEDB;
+}
+
+a:hover {
+  color: #0FA0CE;
+}
