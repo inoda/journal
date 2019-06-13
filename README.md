@@ -1,3 +1,6 @@
+# Private Journal
+![art](./app/assets/images/readme/cover_art.png)
+
 ### About
 
 In a nutshell: a private online journal. A more stripped down version of https://penzu.com (and you really own your data
