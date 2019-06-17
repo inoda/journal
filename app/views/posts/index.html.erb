@@ -16,7 +16,7 @@
     <% @posts.each do |p| %>
       <div class="mt-10 flex-row">
         <div class="">
-          <strong><%= p.decrypted_title %></strong>
+          <strong><%= link_to p.decrypted_title, post_path(p) %></strong>
           <br/>
           <%= p.created_at.strftime("%m/%d/%Y") %>
           <br/>
