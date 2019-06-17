@@ -39,7 +39,7 @@ Rails app and set up a SendGrid mailer.
 ###### Required:
 - `CIPHER_KEY`: Secret key used in encrypting. It needs to be 32 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(32))`.
-- `TAG_CIPHER_IV`: This is used with to make sure that tag IVs are
+- `TAG_CIPHER_IV`: This is used to make sure that tag IVs are
 the same. This allows us to search on them. It needs to be 16 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(16))`.
 
