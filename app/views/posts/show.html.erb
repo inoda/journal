@@ -1,3 +1,14 @@
+<div class="mt-10 flex-row">
+  <%= link_to 'Back', posts_path %>
+  <span>
+    <%= link_to 'Edit', edit_post_path(@post) %>
+    |
+    <%= link_to "Delete", "#", data: { "open-modal": "del-#{@post.id}" } %>
+
+    <%= render partial: 'posts/delete_modal', locals: { post: @post } %>
+  </span>
+</div>
+
 <div>
   <h4><%= @post.decrypted_title %></h4>
 
