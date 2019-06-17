@@ -16,7 +16,7 @@
     <% @posts.each do |p| %>
       <div class="mt-10 flex-row">
         <div class="">
-          <strong><%= p.decrypted_title %></strong>
+          <strong><%= link_to p.decrypted_title, post_path(p) %></strong>
           <br/>
           <%= p.created_at.strftime("%m/%d/%Y") %>
           <br/>
@@ -31,20 +31,7 @@
           <%= link_to "Delete", "#", data: { "open-modal": "del-#{p.id}" } %>
         </div>
 
-        <div class="modal" id=<%= "del-#{p.id}" %>>
-          <div class="modal-wrapper">
-            <div class="modal-container">
-              <div class="modal-body">
-                Are you sure you want to delete this entry?
-              </div>
-
-              <div class="modal-footer">
-                <%= link_to "Cancel", "#", class: "button", data: { "close-modal": "del-#{p.id}" } %>
-                <%= link_to "Confirm", post_path(p), method: :delete, class: "button button-danger" %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'posts/delete_modal', locals: { post: p } %>
       </div>
     <% end %>
 
