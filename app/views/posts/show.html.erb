@@ -1,5 +1,5 @@
 <div class="mt-10 flex-row">
-  <%= link_to 'Back', posts_path %>
+  <%= link_to '&#x2190; Back'.html_safe, posts_path, class: "dark" %>
   <span>
     <%= link_to 'Edit', edit_post_path(@post) %>
     |
@@ -9,7 +9,7 @@
   </span>
 </div>
 
-<div>
+<div class="mt-10">
   <h4><%= @post.decrypted_title %></h4>
 
   <h6><%= @post.created_at.strftime("%m/%d/%Y") %></h6>

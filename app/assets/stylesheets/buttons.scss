@@ -5,17 +5,28 @@ input[type="reset"].button-danger,
 input[type="button"].button-danger {
   color: #721c24;
   background-color: #f8d7da;
-  border-color: #f5c6cb; }
-.button.button-danger:hover,
-button.button-danger:hover,
-input[type="submit"].button-danger:hover,
-input[type="reset"].button-danger:hover,
-input[type="button"].button-danger:hover,
-.button.button-danger:focus,
-button.button-danger:focus,
-input[type="submit"].button-danger:focus,
-input[type="reset"].button-danger:focus,
-input[type="button"].button-danger:focus {
-  color: #721c24;
-  background-color: #f5c6cb;
-  border-color: #f5c6cb; }
+  border-color: #f5c6cb;
+
+  &:hover, &:focus {
+    color: #721c24;
+    background-color: #f5c6cb;
+    border-color: #f5c6cb;
+  }
+}
+
+
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #fff;
+  background-color: #2b8792;
+  border-color: #2b8792;
+
+  &:hover, &:focus {
+    color: #fff;
+    background-color: #257882;
+    border-color: #257882;
+  }
+}

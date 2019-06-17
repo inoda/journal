@@ -37,6 +37,15 @@ a.disabled {
   cursor: not-allowed;
 }
 
+a.dark {
+  color: #555;
+  text-decoration: none;
+  &:hover {
+    color: #888;
+    text-decoration: underline;
+  }
+}
+
 
 /* Spacing */
 
