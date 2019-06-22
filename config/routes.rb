@@ -5,5 +5,10 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
-  resources :posts
+  resources :posts do
+    put :share, on: :member
+    put :unshare, on: :member
+  end
+
+  resources :shared_posts, only: [:show]
 end

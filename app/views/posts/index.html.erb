@@ -16,7 +16,7 @@
     <% @posts.each do |p| %>
       <div class="mt-10 flex-row">
         <div>
-          <strong><%= link_to p.decrypted_title, post_path(p), class: "dark" %></strong>
+          <strong><%= link_to p.decrypted_title, post_path(p), class: "dark" %> <% if p.shared? %><em>(shared)</em><% end %></strong>
           <br/>
           <%= p.created_at.strftime("%m/%d/%Y") %>
           <br/>

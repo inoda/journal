@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:edit, :show, :update, :destroy]
+  before_action :find_post, only: [:edit, :show, :update, :destroy, :share, :unshare]
 
   def index
     @posts_exist = Post.count > 0
@@ -46,6 +46,31 @@ class PostsController < ApplicationController
     end
 
     redirect_to posts_path
+  end
+
+  def share
+    @post.sharing_token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless Post.exists?(sharing_token: random_token)
+    end
+
+    if @post.save
+      flash[:success] = "Shareable link has been generated. Click 'Unshare' to revoke access."
+    else
+      flash[:error] = "Issue generating a shareable link"
+    end
+
+    redirect_to post_path(@post)
+  end
+
+  def unshare
+    if @post.update(sharing_token: nil)
+      flash[:success] = "Shareable link has been revoked. Click 'Share' to get a new shareable link."
+    else
+      flash[:error] = "Issue unsharing"
+    end
+
+    redirect_to post_path(@post)
   end
 
   private

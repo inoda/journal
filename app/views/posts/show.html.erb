@@ -4,6 +4,12 @@
     <%= link_to 'Edit', edit_post_path(@post) %>
     |
     <%= link_to "Delete", "#", data: { "open-modal": "del-#{@post.id}" } %>
+    |
+    <% if @post.shared? %>
+      <%= link_to 'Unshare', unshare_post_path(@post), method: :put %>
+    <% else %>
+      <%= link_to 'Share', share_post_path(@post), method: :put %>
+    <% end %>
 
     <%= render partial: 'posts/delete_modal', locals: { post: @post } %>
   </span>
@@ -11,6 +17,12 @@
 
 <div class="mt-10">
   <h4><%= @post.decrypted_title %></h4>
+
+  <% if @post.shared? %>
+    <p>
+      <strong>Sharing link:</strong> <%= link_to shared_post_url(@post.sharing_token), shared_post_path(@post.sharing_token), target: "_blank" %>
+    </p>
+  <% end %>
 
   <h6><%= @post.created_at.strftime("%m/%d/%Y") %></h6>
 

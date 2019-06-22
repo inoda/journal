@@ -1,17 +1,17 @@
 <% if logged_in %>
-<div class="nav">
-  <div class="container">
-    <div class="nav-items">
-      <div class="art">
-        <%= link_to root_path do %>
-          <%= image_tag "nav_art.png" %>
-        <% end %>
-      </div>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-items">
+        <div class="art">
+          <%= link_to root_path do %>
+            <%= image_tag "nav_art.png" %>
+          <% end %>
+        </div>
 
-      <div>
-        <%= link_to "Logout", sessions_path, method: :delete, class: "dark" %>
+        <div>
+          <%= link_to "Logout", sessions_path, method: :delete, class: "dark" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>

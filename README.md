@@ -15,7 +15,9 @@ I don't need to remember to bring it with me everywhere. The app
 is meant to be used by 1 person, and you can host easily your own instance.
 
 The app is pretty simple: basic CRUD for journal entries and a tagging
-system to categorize/search for entries.
+system to categorize/search for entries. You can also choose to share entries with other people via a tokenized URL, and revoke access any time.
+
+![main screenshot](./app/assets/images/readme/sharing.png)
 
 ### Security
 
