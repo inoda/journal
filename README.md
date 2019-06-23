@@ -44,6 +44,9 @@ Rails app and set up a SendGrid mailer.
 - `TAG_CIPHER_IV`: This is used to make sure that tag IVs are
 the same. This allows us to search on them. It needs to be 16 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(16))`.
+- `SHARING_TOKEN_CIPHER_IV`: This is used to make sure that sharing token IVs are
+the same. This allows us to find posts from a public route parameter. It needs to be 16 bytes base 64 encoded.
+  - `Base64.encode64(SecureRandom.random_bytes(16))`.
 
 ###### For login email alerts:
 - `ALERT_EMAIL_RECIPIENT`: Where the alert gets sent to. If this
@@ -58,3 +61,10 @@ is missing, emailing will be skipped.
   - If you ever need to change your username/password: `User.first.update!(username: "...", password: "...")`
 
 That's it! You're good to go.
+
+## Usage and feedback
+Feel free to use this however you'd like! If you use this, credit
+would be nice but I don't really care that much. I'm primarily maintaining
+this for my own use cases. But...if you have features you'd like to see built, or changes
+that you think should be made, please open issues on this repo and tag me in them!
+I'd love to improve the tool from your feedback.
