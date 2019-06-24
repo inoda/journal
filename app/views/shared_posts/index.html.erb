@@ -4,21 +4,28 @@
 
     </div>
   <% else %>
-    <% @posts.each do |p| %>
-      <div class="mt-10 flex-row">
-        <div>
-          <strong><%= link_to p.decrypted_title, shared_post_path(p.decrypted_sharing_token), class: "dark" %></strong>
-          <br/>
-          <%= p.created_at.strftime("%m/%d/%Y") %>
-          <br/>
-        </div>
-
-        <div>
-          <%= render "tags_list", post: p %>
-        </div>
-      </div>
+    <%= form_tag shared_posts_path, method: :get, class: "mt-10" do %>
+      <%= text_field_tag :search, params[:search], placeholder: "", autocomplete: "off" %>
+      <%= submit_tag "Search for tag", class: "button button-primary" %>
     <% end %>
 
-    <%= pager(@posts, [:search]) %>
+    <div class="mt-30">
+      <% @posts.each do |p| %>
+        <div class="mt-10 flex-row">
+          <div>
+            <strong><%= link_to p.decrypted_title, shared_post_path(p.decrypted_sharing_token), class: "dark" %></strong>
+            <br/>
+            <%= p.created_at.strftime("%m/%d/%Y") %>
+            <br/>
+          </div>
+
+          <div>
+            <%= render "tags_list", post: p %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= pager(@posts, [:search]) %>
+    </div>
   <% end %>
 </div>

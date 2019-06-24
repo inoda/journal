@@ -1,0 +1,15 @@
+<div class="modal" id=<%= "unshare-#{post.id}" %>>
+  <div class="modal-wrapper">
+    <div class="modal-container">
+      <div class="modal-body">
+        Are you sure you want to unshare this entry? This will invalidate the existing
+        public URL forever.
+      </div>
+
+      <div class="modal-footer">
+        <%= link_to "Cancel", "#", class: "button", data: { "close-modal": "unshare-#{post.id}" } %>
+        <%= link_to "Unshare", unshare_post_path(post), method: :put, class: "button button-danger" %>
+      </div>
+    </div>
+  </div>
+</div>

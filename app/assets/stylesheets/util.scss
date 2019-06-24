@@ -36,6 +36,10 @@
   white-space: pre-wrap;
 }
 
+.text-muted {
+  color: #929292;
+}
+
 a.disabled {
   opacity: 0.3;
   cursor: not-allowed;
@@ -48,6 +52,14 @@ a.dark {
     color: #888;
     text-decoration: underline;
   }
+}
+
+.fw-100 {
+  font-weight: 400;
+}
+
+.fs-12 {
+  font-size: 12px;
 }
 
 

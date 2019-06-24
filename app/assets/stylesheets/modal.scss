@@ -14,7 +14,7 @@
   }
 
   .modal-container {
-    width: 300px;
+    max-width: 400px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -33,5 +33,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .button {
+    padding: 0 20px;
   }
 }

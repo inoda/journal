@@ -49,10 +49,12 @@ class PostsController < ApplicationController
   end
 
   def share
-    if PostManager.share(@post)
-      flash[:success] = "Shareable link has been generated. Click 'Unshare' to revoke access."
+    public = params[:public] == true.to_s
+
+    if PostManager.share(@post, public)
+      flash[:success] = public ? "Entry is now available publicly" : "Secret link has been generated. Click 'Unshare' to revoke access."
     else
-      flash[:error] = "Issue generating a shareable link"
+      flash[:error] = public ? "Issue posting entry publicly" : "Issue generating a secret link"
     end
 
     redirect_to post_path(@post)
@@ -60,7 +62,7 @@ class PostsController < ApplicationController
 
   def unshare
     if PostManager.unshare(@post)
-      flash[:success] = "Shareable link has been revoked. Click 'Share' to get a new shareable link."
+      flash[:success] = "All shared access to entry has been revoked"
     else
       flash[:error] = "Issue unsharing"
     end

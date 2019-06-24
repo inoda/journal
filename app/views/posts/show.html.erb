@@ -6,12 +6,10 @@
     <%= link_to "Delete", "#", data: { "open-modal": "del-#{@post.id}" } %>
     |
     <% if @post.shared? %>
-      <%= link_to 'Unshare', unshare_post_path(@post), method: :put %>
+      <%= link_to 'Unshare', "#", data: { "open-modal": "unshare-#{@post.id}" } %>
     <% else %>
-      <%= link_to 'Share', share_post_path(@post), method: :put %>
+      <%= link_to 'Share', "#", data: { "open-modal": "share-#{@post.id}" } %>
     <% end %>
-
-    <%= render partial: 'posts/delete_modal', locals: { post: @post } %>
   </span>
 </div>
 
@@ -20,7 +18,7 @@
 
   <% if @post.shared? %>
     <p>
-      <strong>Sharing link:</strong> <%= link_to shared_post_url(@post.decrypted_sharing_token), shared_post_path(@post.decrypted_sharing_token), target: "_blank" %>
+      <strong>Public URL <%= render partial: 'share_status', locals: { post: @post } %> -</strong> <%= link_to shared_post_url(@post.decrypted_sharing_token), shared_post_path(@post.decrypted_sharing_token), target: "_blank" %>
     </p>
   <% end %>
 
@@ -30,3 +28,7 @@
 
   <div><%= render "tags_list", post: @post %></div>
 </div>
+
+<%= render partial: 'share_modal', locals: { post: @post } %>
+<%= render partial: 'unshare_modal', locals: { post: @post } %>
+<%= render partial: 'posts/delete_modal', locals: { post: @post } %>

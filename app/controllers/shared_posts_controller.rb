@@ -11,7 +11,7 @@ class SharedPostsController < ApplicationController
 
     if !@post
       flash[:error] = "Invalid link"
-      redirect_to root_path and return
+      redirect_to shared_posts_path and return
     end
   end
 end
