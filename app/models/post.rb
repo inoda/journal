@@ -21,6 +21,14 @@ class Post < ApplicationRecord
     Encryptor.decrypt(self.title, self.title_iv)
   end
 
+  def decrypted_sharing_token
+    Encryptor.decrypt(self.sharing_token, self.sharing_token_iv)
+  end
+
+  def self.encrypted_sharing_token(val)
+    Encryptor.encrypt(val, Base64.decode64(ENV['SHARING_TOKEN_CIPHER_IV']))[0]
+  end
+
   def content=(value)
     encrypted, iv = Encryptor.encrypt(value)
     self.content_iv = iv
@@ -30,6 +38,18 @@ class Post < ApplicationRecord
   def title=(value)
     encrypted, iv = Encryptor.encrypt(value)
     self.title_iv = iv
+    super(encrypted)
+  end
+
+  def sharing_token=(value)
+    if value != nil
+      encrypted, iv = Encryptor.encrypt(value, Base64.decode64(ENV['SHARING_TOKEN_CIPHER_IV']))
+      self.sharing_token_iv = iv
+    else
+      encrypted = nil
+      self.sharing_token_iv = nil
+    end
+
     super(encrypted)
   end
 

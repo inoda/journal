@@ -49,12 +49,7 @@ class PostsController < ApplicationController
   end
 
   def share
-    @post.sharing_token = loop do
-      random_token = SecureRandom.urlsafe_base64(nil, false)
-      break random_token unless Post.exists?(sharing_token: random_token)
-    end
-
-    if @post.save
+    if PostManager.share(@post)
       flash[:success] = "Shareable link has been generated. Click 'Unshare' to revoke access."
     else
       flash[:error] = "Issue generating a shareable link"
@@ -64,7 +59,7 @@ class PostsController < ApplicationController
   end
 
   def unshare
-    if @post.update(sharing_token: nil)
+    if PostManager.unshare(@post)
       flash[:success] = "Shareable link has been revoked. Click 'Share' to get a new shareable link."
     else
       flash[:error] = "Issue unsharing"

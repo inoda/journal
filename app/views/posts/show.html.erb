@@ -20,7 +20,7 @@
 
   <% if @post.shared? %>
     <p>
-      <strong>Sharing link:</strong> <%= link_to shared_post_url(@post.sharing_token), shared_post_path(@post.sharing_token), target: "_blank" %>
+      <strong>Sharing link:</strong> <%= link_to shared_post_url(@post.decrypted_sharing_token), shared_post_path(@post.decrypted_sharing_token), target: "_blank" %>
     </p>
   <% end %>
 

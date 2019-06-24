@@ -31,7 +31,8 @@ ActiveRecord::Schema.define(version: 20190622045354) do
     t.binary "content_iv", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "sharing_token"
+    t.binary "sharing_token"
+    t.binary "sharing_token_iv"
     t.index ["sharing_token"], name: "index_posts_on_sharing_token", unique: true
   end
 
