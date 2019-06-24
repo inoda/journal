@@ -16,7 +16,7 @@ is meant to be used by 1 person, and you can host easily your own instance.
 
 - Basic CRUD for journal entries with a tagging
 system to categorize/search for entries
-- Sharing via secret link, or public post (like a blog). Access can be
+- Sharing via secret link or public post. Access can be
 revoked at any time.
 - [SECURITY] Even though it is a 1 user app, you still set up a login with a username and password (both are hashed).
 - [SECURITY] All journal entries/titles/tags/tokens are encrypted at the database level using
