@@ -1,4 +1,5 @@
 class SharedPostsController < ApplicationController
+  layout "layouts/public"
   skip_before_action :require_logged_in, only: [:show, :index]
 
   def index

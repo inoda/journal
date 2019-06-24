@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Journal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag "favicon.ico" %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body class="public">
+    <%= link_to shared_posts_path do %>
+      <div class="art pt-100">
+        <%= image_tag "nav_art.png" %>
+      </div>
+    <% end %>
+
+
+    <div class="container">
+      <div class="mt-10">
+        <%= yield %>
+        <div class="pt-100"></div>
+      </div>
+    </div>
+  </body>
+</html>
