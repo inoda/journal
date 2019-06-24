@@ -34,6 +34,6 @@ class PostManager
   end
 
   def self.unshare(post)
-    post.update(sharing_token: nil)
+    post.update(sharing_token: nil, listed_publicly: false)
   end
 end
