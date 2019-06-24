@@ -3,6 +3,7 @@ class SharedPostsController < ApplicationController
   skip_before_action :require_logged_in, only: [:show, :index]
 
   def index
+    @posts_exist = Post.where.not(sharing_token: nil).where(listed_publicly: true).count > 0
     @posts = Post.where.not(sharing_token: nil).where(listed_publicly: true).order(created_at: :desc).has_tag(params[:search]).paginate(params[:page])
   end
 

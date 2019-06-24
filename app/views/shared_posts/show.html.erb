@@ -4,4 +4,6 @@
   <h4><%= @post.decrypted_title %></h4>
 
   <p class="text-whitespace"><%= @post.decrypted_content %></p>
+
+  <div><%= render "tags_list", post: @post %></div>
 </div>

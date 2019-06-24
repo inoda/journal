@@ -24,6 +24,10 @@
         </div>
 
         <div>
+          <% if p.shared? %>
+            <%= link_to 'Unshare', "#", data: { "open-modal": "unshare-#{p.id}" } %>
+            |
+          <% end %>
           <%= link_to "Read", post_path(p) %>
           |
           <%= link_to "Edit", edit_post_path(p) %>
@@ -32,6 +36,8 @@
         </div>
 
         <%= render partial: 'delete_modal', locals: { post: p } %>
+        <%= render partial: 'share_modal', locals: { post: p } %>
+        <%= render partial: 'unshare_modal', locals: { post: p } %>
       </div>
     <% end %>
 
