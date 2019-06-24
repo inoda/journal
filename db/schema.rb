@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20190622045354) do
     t.datetime "updated_at", null: false
     t.binary "sharing_token"
     t.binary "sharing_token_iv"
+    t.boolean "listed_publicly", default: false, null: false
+    t.index ["listed_publicly"], name: "index_posts_on_listed_publicly"
     t.index ["sharing_token"], name: "index_posts_on_sharing_token", unique: true
   end
 

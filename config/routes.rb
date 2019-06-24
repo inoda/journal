@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     put :unshare, on: :member
   end
 
-  resources :shared_posts, only: [:show]
+  resources :shared_posts, only: [:show, :index]
 end
