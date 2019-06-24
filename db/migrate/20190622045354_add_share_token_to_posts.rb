@@ -1,6 +1,6 @@
-class AddShareTokenToPosts < ActiveRecord::Migration[5.1]
+class AddSharingToPosts < ActiveRecord::Migration[5.1]
   def change
-    drop_column :posts, :sharing_token
+    remove_column :posts, :sharing_token
     add_column :posts, :sharing_token, :binary
     add_column :posts, :sharing_token_iv, :binary
     add_column :posts, :listed_publicly, :boolean, null: false, default: false
