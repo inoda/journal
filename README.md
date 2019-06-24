@@ -21,7 +21,7 @@ revoked at any time.
 - [SECURITY] Even though it is a 1 user app, you still set up a login with a username and password (both are hashed).
 - [SECURITY] All journal entries/titles/tags/tokens are encrypted at the database level using
 [OpenSSL::Cipher](https://ruby-doc.org/stdlib-2.4.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html).
-- [SECURITY] Email alert when a login occurs (if you want).
+- [SECURITY] Email alert when a login occurs (optional).
 
 ![crud](./app/assets/images/readme/crud.png)
 
