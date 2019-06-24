@@ -1,6 +1,11 @@
 <% if !@posts_exist %>
-  <div class="text-center mt-30">
-    <%= image_tag "cover_art.png" %>
+  <div class="text-center">
+    <div class="art mt-30">
+      <%= image_tag "cover_art.png" %>
+    </div>
+
+    <h4 class="mt-30">No public posts</h4>
+    <p>Journal entries shared via public post will show here.</p>
   </div>
 <% else %>
   <%= form_tag shared_posts_path, method: :get, class: "mt-30" do %>

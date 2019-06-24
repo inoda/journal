@@ -13,8 +13,11 @@
 
       <div class="modal-footer">
         <%= link_to "Cancel", "#", class: "button", data: { "close-modal": "share-#{post.id}" } %>
-        <%= link_to "Secret link", share_post_path(post), method: :put, class: "button button-primary" %>
-        <%= link_to "Public post", share_post_path(post, public: true), method: :put, class: "button button-primary" %>
+
+        <div>
+          <%= link_to "Secret link", share_post_path(post), method: :put, class: "button button-primary" %>
+          <%= link_to "Public post", share_post_path(post, public: true), method: :put, class: "button button-primary" %>
+        </div>
       </div>
     </div>
   </div>

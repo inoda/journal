@@ -5,8 +5,18 @@
     color: #a5a5a5;
     border-top: 1px solid #ececec;
   }
-}
 
-.public #alert {
-  top: 20px;
+  .art {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  #alert {
+    top: 20px;
+  }
 }
