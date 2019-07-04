@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     put :unshare, on: :member
   end
 
+  resources :prompts, only: [:create, :index, :destroy]
+
   resources :shared_posts, only: [:show, :index]
 end

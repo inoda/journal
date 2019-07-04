@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @random_prompt = Prompt.random
     @post = Post.new
   end
 

@@ -1,0 +1,21 @@
+<div class="flex-row flex-row-collapse">
+  <%= form_tag prompts_path, method: :post, class: "mt-10 flex-row w-100-per" do %>
+    <%= text_field_tag :content, nil, placeholder: "", autocomplete: "off", required: true, class: "w-100-per" %>
+    <%= submit_tag "Save prompt", class: "button ml-10" %>
+  <% end %>
+</div>
+
+<div class="mt-50">
+  <% @prompts.each do |p| %>
+    <div class="mt-10 flex-row flex-row-collapse">
+      <div><%= p.decrypted_content %></div>
+
+      <div>
+        <%= link_to "Delete", prompt_path(p), method: :delete %>
+      </div>
+    </div>
+    <hr>
+  <% end %>
+
+  <%= pager(@prompts, [:search]) %>
+</div>

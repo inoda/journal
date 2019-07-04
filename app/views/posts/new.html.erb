@@ -1,1 +1,5 @@
+<% if @random_prompt.present? %>
+  <div class="mb-20">Prompt: <strong><%= @random_prompt.decrypted_content %></strong></div>
+<% end %>
+
 <%= render 'form' %>
