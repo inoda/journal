@@ -15,11 +15,12 @@ is meant to be used by 1 person, and you can host easily your own instance.
 ## Features
 
 - Basic CRUD for journal entries with a tagging
-system to categorize/search for entries
+system to categorize/search for entries.
 - Sharing via secret link or public post. Access can be
 revoked at any time.
+- Customizable prompts to help you kick off journaling.
 - [SECURITY] Even though it is a 1 user app, you still set up a login with a username and password (both are hashed).
-- [SECURITY] All journal entries/titles/tags/tokens are encrypted at the database level using
+- [SECURITY] All journal entries/titles/tags/tokens/prompts are encrypted at the database level using
 [OpenSSL::Cipher](https://ruby-doc.org/stdlib-2.4.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html).
 - [SECURITY] Email alert when a login occurs (optional).
 
@@ -28,6 +29,8 @@ revoked at any time.
 ![sharing](./app/assets/images/readme/sharing.png)
 
 ![alert](./app/assets/images/readme/alert.png)
+
+![sharing](./app/assets/images/readme/prompts.png)
 
 ## Hosting your own
 
