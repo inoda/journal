@@ -6,7 +6,7 @@
   <div>
     <%= form_tag posts_path, method: :get, class: "mt-10" do %>
       <div>
-        <%= text_field_tag :search, params[:search], placeholder: "Tag", autocomplete: "off" %>
+        <%= text_field_tag :search, params[:search], placeholder: "Tag", autocomplete: "off", class: "w-150-px" %>
       </div>
 
       <div class="mt-10">

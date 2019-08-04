@@ -9,7 +9,7 @@
   </div>
 <% else %>
   <%= form_tag shared_posts_path, method: :get, class: "mt-30" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "", autocomplete: "off" %>
+    <%= text_field_tag :search, params[:search], placeholder: "", autocomplete: "off", class: "w-150-px" %>
     <%= submit_tag "Search tag", class: "button button-primary" %>
   <% end %>
 
