@@ -7,7 +7,7 @@
 
       <div class="modal-footer">
         <%= link_to "Cancel", "#", class: "button", data: { "close-modal": "del-#{post.id}" } %>
-        <%= link_to "Confirm", post_path(post), method: :delete, class: "button button-danger" %>
+        <%= link_to "Delete", post_path(post), method: :delete, class: "button button-danger" %>
       </div>
     </div>
   </div>

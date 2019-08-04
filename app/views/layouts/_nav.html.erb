@@ -9,7 +9,8 @@
         </div>
 
         <div>
-          <%= link_to "Prompts", prompts_path, class: "dark" %>
+          <%= link_to "+ New", new_post_path, class: "dark" %>
+          <%= link_to "Prompts", prompts_path, class: "dark ml-10" %>
           <%= link_to "Public page", shared_posts_path, class: "dark ml-10", target: "_blank" %>
           <%= link_to "Logout", sessions_path, method: :delete, class: "dark ml-10" %>
         </div>

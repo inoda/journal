@@ -3,7 +3,7 @@
     <%= link_to "New journal entry", new_post_path, class: "button" %>
   </div>
 <% else %>
-  <div class="flex-row flex-row-collapse">
+  <div>
     <%= form_tag posts_path, method: :get, class: "mt-10" do %>
       <div>
         <%= text_field_tag :search, params[:search], placeholder: "Tag", autocomplete: "off" %>
@@ -18,37 +18,36 @@
         <%= submit_tag "Search", class: "button" %>
       </div>
     <% end %>
-
-    <%= link_to "New joural entry", new_post_path, class: "button mt-10" %>
   </div>
 
   <div class="mt-50">
     <% @posts.each do |p| %>
-      <div class="mt-10 flex-row flex-row-collapse">
-        <div>
-          <strong><%= link_to p.decrypted_title, post_path(p), class: "dark" %> <%= render partial: 'share_status', locals: { post: p } %></strong>
-          <br/>
-          <%= p.created_at.strftime("%m/%d/%Y") %>
-          <br/>
-          <%= render "tags_list", post: p %>
-        </div>
+      <div>
+        <strong><%= link_to p.decrypted_title, post_path(p), class: "dark" %> <%= render partial: 'share_status', locals: { post: p } %></strong>
+      </div>
 
-        <div>
-          <% if p.shared? %>
-            <%= link_to 'Unshare', "#", data: { "open-modal": "unshare-#{p.id}" } %>
-            |
-          <% end %>
-          <%= link_to "Read", post_path(p) %>
+      <div class="fs-13 mt-5">
+        <%= p.created_at.strftime("%m/%d/%Y") %>
+        |
+        <%= link_to "Read", post_path(p) %>
+        |
+        <%= link_to "Edit", edit_post_path(p) %>
+        |
+        <%= link_to "Delete", "#", data: { "open-modal": "del-#{p.id}" } %>
+        <% if p.shared? %>
           |
-          <%= link_to "Edit", edit_post_path(p) %>
-          |
-          <%= link_to "Delete", "#", data: { "open-modal": "del-#{p.id}" } %>
-        </div>
+          <%= link_to 'Unshare', "#", data: { "open-modal": "unshare-#{p.id}" } %>
+        <% end %>
 
         <%= render partial: 'delete_modal', locals: { post: p } %>
         <%= render partial: 'share_modal', locals: { post: p } %>
         <%= render partial: 'unshare_modal', locals: { post: p } %>
       </div>
+
+      <div class="fs-13">
+        Tags: <%= render "tags_list", post: p %>
+      </div>
+
       <hr>
     <% end %>
 

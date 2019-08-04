@@ -1,35 +1,7 @@
-/* Alignment */
-
-.flex-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@media (max-width: 750px) {
-  .flex-row-collapse {
-    display: block;
-    text-align: center;
-  }
-}
-
-.display-inline-b {
-  display: inline-block;
-}
-
-
 /* Text */
 
 .text-center {
   text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.text-left {
-  text-align: left;
 }
 
 .text-whitespace {
@@ -58,8 +30,8 @@ a.dark {
   font-weight: 400;
 }
 
-.fs-12 {
-  font-size: 12px;
+.fs-13 {
+  font-size: 13px;
 }
 
 
@@ -79,6 +51,10 @@ a.dark {
 
 .mt-10 {
   margin-top: 10px;
+}
+
+.mt-5 {
+  margin-top: 5px;
 }
 
 .mt-15 {
