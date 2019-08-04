@@ -3,7 +3,9 @@ class PostsController < ApplicationController
 
   def index
     @posts_exist = Post.count > 0
-    @posts = Post.includes(:tags).order(created_at: :desc).has_tag(params[:search]).paginate(params[:page])
+    posts = Post.includes(:tags).order(created_at: :desc).has_tag(params[:search])
+    posts = posts.where.not(sharing_token: nil) if params[:only_shared]
+    @posts = posts.paginate(params[:page])
   end
 
   def new

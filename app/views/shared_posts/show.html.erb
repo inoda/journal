@@ -1,3 +1,9 @@
+<% if !@post.listed_publicly %>
+  <div class="banner banner-warning mb-20">
+    <div>This post is shared with you via a private link and is not meant to be publicly accessible.</div>
+  </div>
+<% end %>
+
 <%= link_to '&#x2190; See all posts'.html_safe, shared_posts_path, class: "dark" %>
 
 <div class="mt-10">

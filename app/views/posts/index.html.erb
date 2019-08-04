@@ -5,8 +5,18 @@
 <% else %>
   <div class="flex-row flex-row-collapse">
     <%= form_tag posts_path, method: :get, class: "mt-10" do %>
-      <%= text_field_tag :search, params[:search], placeholder: "", autocomplete: "off" %>
-      <%= submit_tag "Search for tag", class: "button" %>
+      <div>
+        <%= text_field_tag :search, params[:search], placeholder: "Tag", autocomplete: "off" %>
+      </div>
+
+      <div class="mt-10">
+        <%= check_box_tag :only_shared, true, params[:only_shared] %>
+        <span class="ml-5">Only shared</span>
+      </div>
+
+      <div class="mt-10">
+        <%= submit_tag "Search", class: "button" %>
+      </div>
     <% end %>
 
     <%= link_to "New joural entry", new_post_path, class: "button mt-10" %>
