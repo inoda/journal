@@ -1,7 +1,10 @@
-<div>
-  <%= form_tag prompts_path, method: :post, class: "mt-10 w-100-per" do %>
-    <%= text_field_tag :content, nil, placeholder: "", autocomplete: "off", required: true %>
-    <%= submit_tag "Save prompt", class: "button ml-10" %>
+<div class="text-center">
+  <%= form_tag prompts_path, method: :post, class: "mt-10" do %>
+    <div>
+      <%= text_field_tag :content, nil, placeholder: "", autocomplete: "off", required: true, class: "u-full-width" %>
+    </div>
+
+    <%= submit_tag "Save", class: "button button-primary mt-15" %>
   <% end %>
 </div>
 
@@ -11,10 +14,13 @@
       <div><%= p.decrypted_content %></div>
 
       <div>
-        <%= link_to "Delete", prompt_path(p), method: :delete %>
+        <%= link_to "Delete", "#", data: { "open-modal": "del-#{p.id}" } %>
       </div>
     </div>
+
     <hr>
+
+    <%= render partial: 'delete_modal', locals: { prompt: p } %>
   <% end %>
 
   <%= pager(@prompts, [:search]) %>

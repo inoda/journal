@@ -38,10 +38,6 @@
           |
           <%= link_to 'Unshare', "#", data: { "open-modal": "unshare-#{p.id}" } %>
         <% end %>
-
-        <%= render partial: 'delete_modal', locals: { post: p } %>
-        <%= render partial: 'share_modal', locals: { post: p } %>
-        <%= render partial: 'unshare_modal', locals: { post: p } %>
       </div>
 
       <div class="fs-13">
@@ -49,6 +45,10 @@
       </div>
 
       <hr>
+
+      <%= render partial: 'delete_modal', locals: { post: p } %>
+      <%= render partial: 'share_modal', locals: { post: p } %>
+      <%= render partial: 'unshare_modal', locals: { post: p } %>
     <% end %>
 
     <%= pager(@posts, [:search]) %>

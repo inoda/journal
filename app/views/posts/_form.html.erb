@@ -5,13 +5,13 @@
     </div>
 
     <div>
-      <%= text_area_tag :content, @post.decrypted_content, placeholder: "Content", class: "u-full-width h-300 mt-10", autocomplete: "off" %>
+      <%= text_area_tag :content, @post.decrypted_content, placeholder: "Content", class: "w-100-per h-300 mt-10", autocomplete: "off" %>
     </div>
 
     <div>
-      <%= text_field_tag :tags, @post.tags.map(&:decrypted_label).join(", "), placeholder: "Tags separated by commas (Example: meditations, new ideas, self improvement)", class: "u-full-width", autocomplete: "off" %>
+      <%= text_field_tag :tags, @post.tags.map(&:decrypted_label).join(", "), placeholder: "Comma separated tags (e.g. work, happiness, relationships)", class: "u-full-width", autocomplete: "off" %>
     </div>
 
-    <%= submit_tag "Save", class: "button mt-30" %>
+    <%= submit_tag "Save", class: "button button-primary mt-15" %>
   <% end %>
 </div>
