@@ -1,7 +1,7 @@
 <div class="paginator mt-30">
   <div class="pagination-num-items">
     <% if total_items > 0 %>
-      Showing <strong><%= displayed_items_lower_bound %></strong>-<strong><%= displayed_items_upper_bound %></strong> of <strong><%= total_items %></strong>
+      Showing <%= displayed_items_lower_bound %>-<%= displayed_items_upper_bound %> of <%= total_items %>
     <% else %>
       No items to show
     <% end %>

@@ -1,5 +1,0 @@
-<% if post.tags.any? %>
-  <% post.tags.sort_by(&:decrypted_label).each_with_index do |t, i| %>
-    <%= link_to t.decrypted_label, shared_posts_path(search: t.decrypted_label) %> <%= "|" unless i == post.tags.length - 1 %>
-  <% end %>
-<% end %>

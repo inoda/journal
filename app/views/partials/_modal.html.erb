@@ -1,0 +1,14 @@
+<div class="modal" id=<%= "#{id}" %>>
+  <div class="modal-wrapper">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div></div>
+        <a class="close" data-close-modal=<%= "#{id}" %>>
+          <i class="fa fa-times text-muted"></i>
+        </a>
+      </div>
+
+      <%= yield %>
+    </div>
+  </div>
+</div>

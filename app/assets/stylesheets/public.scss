@@ -1,22 +1,13 @@
 .public {
-  background: #f8f8f6;
-
   .footer {
-    color: #a5a5a5;
-    border-top: 1px solid #ececec;
-  }
-
-  .art {
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-
-    img {
-      max-width: 100%;
-    }
-  }
-
-  #alert {
-    top: 20px;
+    position: fixed;
+    bottom: 5px;
+    border-top: 1px solid #444;
+    width: 100%;
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    background: #202020;
+    opacity: 0.6;
   }
 }

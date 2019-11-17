@@ -1,17 +1,28 @@
-<div class="text-center">
+<div class="container">
   <%= form_for @post do %>
-    <div>
-      <%= text_field_tag :title, @post.decrypted_title, placeholder: "Title", class: "u-full-width", autocomplete: "off" %>
+    <div class="input-group">
+      <%= text_field_tag :title, @post.decrypted_title, placeholder: "Title", autocomplete: "off" %>
     </div>
 
-    <div>
-      <%= text_area_tag :content, @post.decrypted_content, placeholder: "Content", class: "w-100-per h-300 mt-10", autocomplete: "off" %>
+    <div class="input-group">
+      <%= text_area_tag :content, @post.decrypted_content, placeholder: "Content", autocomplete: "off" %>
     </div>
 
-    <div>
-      <%= text_field_tag :tags, @post.tags.map(&:decrypted_label).join(", "), placeholder: "Comma separated tags (e.g. work, happiness, relationships)", class: "u-full-width", autocomplete: "off" %>
-    </div>
+    <div class="form-actions">
+      <%= submit_tag "Save", class: "btn btn-primary btn-round" %>
 
-    <%= submit_tag "Save", class: "button button-primary mt-15" %>
+      <% if @post.id %>
+        <%= button_tag "Delete", class: "btn btn-muted btn-round", data: { "open-modal": "del-#{@post.id}" } %>
+      <% end %>
+    </div>
   <% end %>
 </div>
+
+<% if @post.id %>
+  <%= render layout: "partials/modal", locals: { id: "del-#{@post.id}" } do %>
+    <div class="modal-body text-center">
+      Are you sure you want to delete this entry?
+      <%= button_to "Delete", post_path(@post), method: :delete, class: "btn mt-30 btn-round btn-danger" %>
+    </div>
+  <% end %>
+<% end %>

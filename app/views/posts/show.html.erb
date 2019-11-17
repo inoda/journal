@@ -1,31 +1,16 @@
-<div class="mt-10">
-  <%= link_to '&#x2190; Back'.html_safe, posts_path, class: "dark" %>
-  |
-  <%= link_to 'Edit', edit_post_path(@post) %>
-  |
-  <%= link_to "Delete", "#", data: { "open-modal": "del-#{@post.id}" } %>
-  |
-  <% if @post.shared? %>
-    <%= link_to 'Unshare', "#", data: { "open-modal": "unshare-#{@post.id}" } %>
-  <% else %>
-    <%= link_to 'Share', "#", data: { "open-modal": "share-#{@post.id}" } %>
-  <% end %>
-</div>
+<div class="container">
+  <div class="bg-grey pv-20 ph-30">
+    <div class="flex flex-space-between">
+      <%= link_to '&#x2190; Back'.html_safe, posts_path, class: "text-muted" %>
 
-<% if @post.shared? %>
-  <div class="mt-10">
-    <%= link_to shared_post_url(@post.decrypted_sharing_token), shared_post_path(@post.decrypted_sharing_token), target: "_blank" %> <%= render partial: 'share_status', locals: { post: @post } %>
+      <%= render partial: 'actions', locals: { p: @post } %>
+    </div>
+
+    <div class="mt-30">
+      <h4 class="text-accent"><%= @post.decrypted_title %></h4>
+      <div class="text-muted text-small bold mt-8"><%= @post.created_at.strftime("%m&#183;%d&#183;%Y").html_safe %></div>
+
+      <p class="reading-content mt-30"><%= @post.decrypted_content %></p>
+    </div>
   </div>
-<% end %>
-
-<div class="mt-30">
-  <h4><%= @post.decrypted_title %></h4>
-
-  <p class="text-whitespace"><%= @post.decrypted_content %></p>
-
-  <div>Tags: <%= render "tags_list", post: @post %></div>
 </div>
-
-<%= render partial: 'share_modal', locals: { post: @post } %>
-<%= render partial: 'unshare_modal', locals: { post: @post } %>
-<%= render partial: 'delete_modal', locals: { post: @post } %>

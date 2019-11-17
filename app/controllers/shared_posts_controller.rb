@@ -4,7 +4,7 @@ class SharedPostsController < ApplicationController
 
   def index
     @posts_exist = Post.where.not(sharing_token: nil).where(listed_publicly: true).count > 0
-    @posts = Post.where.not(sharing_token: nil).where(listed_publicly: true).order(created_at: :desc).has_tag(params[:search]).paginate(params[:page])
+    @posts = Post.where.not(sharing_token: nil).where(listed_publicly: true).order(created_at: :desc).paginate(params[:page])
   end
 
   def show

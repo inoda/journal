@@ -1,20 +1,38 @@
 <% if logged_in %>
+<div id="navbar">
   <div class="nav">
     <div class="container">
-      <div class="nav-items">
-        <div class="art">
-          <%= link_to root_path do %>
-            <%= image_tag "nav_art.png" %>
-          <% end %>
-        </div>
+      <%= link_to root_path do %>
+        Journal
+      <% end %>
 
-        <div>
-          <%= link_to "+ New", new_post_path, class: "dark" %>
-          <%= link_to "Prompts", prompts_path, class: "dark ml-10" %>
-          <%= link_to "Public page", shared_posts_path, class: "dark ml-10", target: "_blank" %>
-          <%= link_to "Logout", sessions_path, method: :delete, class: "dark ml-10" %>
-        </div>
-      </div>
+      <ul class="nav-items-default nav-items nav-items-right">
+        <li><%= link_to "prompts", prompts_path %></li>
+        <li><%= link_to "public page", shared_posts_path %></li>
+        <li><%= link_to "logout", sessions_path, method: :delete %></li>
+      </ul>
+
+      <ul class="nav-items-responsive nav-items nav-items-right">
+        <li id="nav-menu-open" onclick="openNav()"><a><i class="fa fa-bars"></i></a></li>
+      </ul>
     </div>
   </div>
+
+  <ul class="nav-items-expanded">
+    <div class="border"></div>
+    <li><%= link_to "prompts", prompts_path %></li>
+    <div class="border"></div>
+    <li><%= link_to "public page", shared_posts_path %></li>
+    <div class="border"></div>
+    <li><%= link_to "logout", sessions_path, method: :delete %></li>
+    <div class="border"></div>
+  </ul>
+</div>
+
+<script type="text/javascript">
+  function openNav() {
+    var nav = document.getElementById("navbar");
+    nav.className = nav.className === "open" ? "" : "open";
+  }
+</script>
 <% end %>

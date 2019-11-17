@@ -1,0 +1,46 @@
+<div>
+  <%= link_to edit_post_path(p) do %>
+    <i class='fa fa-lg fa-pen-square text-muted'></i>
+  <% end %>
+
+  <%= link_to "#", data: { "open-modal": "share-#{p.id}" } do %>
+    <% if !p.shared? %>
+      <i class='fa fa-lg fa-share-alt-square text-muted ml-5'></i>
+    <% else %>
+      <i class='fa fa-lg fa-share-alt-square text-accent-muted ml-5'></i>
+    <% end %>
+  <% end %>
+</div>
+
+<%= render layout: "partials/modal", locals: { id: "share-#{p.id}" } do %>
+  <% if !p.shared? %>
+    <div class="modal-body">
+      <%= link_to share_post_path(p, public: true), method: :put, class: 'link-tile six columns mt-20' do %>
+        <strong>Public Post</strong>
+        <div class="mt-10">Accessible by anybody - like posting on a blog. Your entry will show on your public page.</div>
+      <% end %>
+
+      <%= link_to share_post_path(p), method: :put, class: 'link-tile six columns mt-20' do %>
+        <strong>Secret Link</strong>
+        <div class="mt-10">Only be accessible by people you share the link with. Your entry will not show on your public page.</div>
+      <% end %>
+
+      <div class="clearfix"></div>
+    </div>
+  <% else %>
+    <div class="modal-body text-center">
+      <div>
+        <h5><% if p.listed_publicly %>Public post<% else %>Secret link<% end %>:</h5>
+        <%= link_to shared_post_url(p.decrypted_sharing_token), shared_post_path(p.decrypted_sharing_token), target: "_blank", class: 'break-words' %>
+      </div>
+      <%= button_tag "Unshare", data: { "open-modal": "unshare-#{p.id}" }, class: "btn btn-muted btn-round mt-30" %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render layout: "partials/modal", locals: { id: "unshare-#{p.id}" } do %>
+  <div class="modal-body text-center">
+    Are you sure you want to unshare this entry? This will invalidate the current URL forever.
+    <%= button_to "I'm sure", unshare_post_path(p), method: :put, class: "btn btn-danger btn-round mt-30" %>
+  </div>
+<% end %>
