@@ -1,0 +1,24 @@
+{
+  "name": "Journal",
+  "description": "A simple self-hosted journaling app",
+  "repository": "https://github.com/inoda/journal",
+  "logo": "https://raw.githubusercontent.com/inoda/ontrack/master/app/assets/images/readme/logo-square.png",
+  "keywords": ["journal"],
+  "addons": [
+    "sendgrid"
+  ],
+  "env": {
+    "CIPHER_KEY": {
+      "description": "Generate with `Base64.encode64(SecureRandom.random_bytes(32))`",
+      "value": ""
+    },
+    "SHARING_TOKEN_CIPHER_IV": {
+      "description": "Generate with `Base64.encode64(SecureRandom.random_bytes(16))`",
+      "value": ""
+    },
+    "ALERT_EMAIL_RECIPIENT": {
+      "description": "Where login alert notifications will be sent to. If you don't want to receive the alerts, leave this blank.",
+      "value": ""
+    }
+  }
+}
