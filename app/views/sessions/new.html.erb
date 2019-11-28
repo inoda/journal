@@ -1,19 +1,15 @@
-<div>
-  <div class="text-center art">
-    <%= image_tag "cover_art.png" %>
-  </div>
+<div class="container mt-200">
+  <%= form_tag sessions_path, class: "six columns offset-by-three" do %>
+    <div class="input-group">
+      <%= text_field_tag :username, nil, placeholder: "Username", autocomplete: "off" %>
+    </div>
 
-  <div class="text-center row six columns offset-by-three mt-30">
-    <%= form_tag sessions_path do %>
-      <div>
-        <%= text_field_tag :username, nil, placeholder: "Username", class: "u-full-width", autocomplete: "off" %>
-      </div>
+    <div class="input-group">
+      <%= password_field_tag :password, nil, placeholder: "Password", autocomplete: "off" %>
+    </div>
 
-      <div>
-        <%= password_field_tag :password, nil, placeholder: "Password", class: "u-full-width mt-10", autocomplete: "off" %>
-      </div>
-
-      <%= submit_tag "Submit", class: "u-full-width button-primary mt-10" %>
-    <% end %>
-  </div>
+    <div class="text-center mt-30">
+      <%= submit_tag "Login", class: "btn btn-primary btn-round" %>
+    </div>
+  <% end %>
 </div>

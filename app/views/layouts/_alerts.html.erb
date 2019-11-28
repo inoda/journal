@@ -10,10 +10,6 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#alert').animate({ opacity: 1 }, '0.5s');
-
-    setTimeout(function() {
-      $('#alert').animate({ height: 0, opacity: 0 }, '0.5s');
-    }, 3000);
+    $('#alert').slideDown('slow').delay(1500).slideUp('slow');
   });
 </script>

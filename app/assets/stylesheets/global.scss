@@ -1,0 +1,41 @@
+body {
+  background: #202020;
+  padding-bottom: 100px;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+span {
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+* {
+  color: #ECF3E6;
+  font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+}
+
+.border {
+  width: 100%;
+  border-top: 2px solid #6b6b6b;
+}

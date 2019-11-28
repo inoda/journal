@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_054248) do
+ActiveRecord::Schema.define(version: 2019_11_28_162548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_post_tags_on_post_id"
-    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
-  end
 
   create_table "posts", force: :cascade do |t|
     t.binary "title", null: false
@@ -41,13 +32,6 @@ ActiveRecord::Schema.define(version: 2019_07_04_054248) do
   create_table "prompts", force: :cascade do |t|
     t.binary "content", null: false
     t.binary "content_iv", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.binary "label", null: false
-    t.binary "label_iv", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

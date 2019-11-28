@@ -1,0 +1,27 @@
+#alert {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  top: 0;
+}
+
+.alert {
+  padding: 10px;
+  text-align: center;
+  padding-top: 13px;
+}
+
+.alert-error {
+  background: #351417;
+  border-bottom: 3px solid #5a2328;
+}
+
+.alert-success {
+  background-color: #203325;
+  border-bottom: 3px solid #32523a;
+}
+
+.alert-info {
+  background: #1e2a44;
+  border-bottom: 3px solid #3a4c75;
+}

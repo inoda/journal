@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts_exist = Post.count > 0
-    posts = Post.includes(:tags).order(created_at: :desc).has_tag(params[:search])
+    posts = Post.all.order(created_at: :desc)
     posts = posts.where.not(sharing_token: nil) if params[:only_shared]
     @posts = posts.paginate(params[:page])
   end
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = PostManager.create(params[:title], params[:content], tags_param)
+    @post = PostManager.create(params[:title], params[:content])
 
     if !@post.new_record?
       flash[:success] = "Entry saved"
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if PostManager.update(@post, params[:title], params[:content], tags_param)
+    if PostManager.update(@post, params[:title], params[:content])
       flash[:success] = "Entry saved"
       redirect_to post_path(@post)
     else
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     public = params[:public] == true.to_s
 
     if PostManager.share(@post, public)
-      flash[:success] = public ? "Entry is now available publicly" : "Secret link has been generated. Click 'Unshare' to revoke access."
+      flash[:success] = public ? "Entry is now available publicly" : "Secret link has been generated."
     else
       flash[:error] = public ? "Issue posting entry publicly" : "Issue generating a secret link"
     end
@@ -74,10 +74,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def tags_param
-    params[:tags].split(",").map(&:strip).reject { |t| t.blank? }
-  end
 
   def find_post
     @post = Post.find_by_id(params[:id])

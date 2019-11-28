@@ -20,7 +20,7 @@ system to categorize/search for entries.
 revoked at any time.
 - Customizable prompts to help you kick off journaling.
 - [SECURITY] Even though it is a 1 user app, you still set up a login with a username and password (both are hashed).
-- [SECURITY] All journal entries/titles/tags/tokens/prompts are encrypted at the database level using
+- [SECURITY] All journal entries/titles/tokens/prompts are encrypted at the database level using
 [OpenSSL::Cipher](https://ruby-doc.org/stdlib-2.4.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html).
 - [SECURITY] Email alert when a login occurs (optional).
 
@@ -42,9 +42,6 @@ Rails app and set up a SendGrid mailer.
 ###### Required:
 - `CIPHER_KEY`: Secret key used in encrypting. It needs to be 32 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(32))`.
-- `TAG_CIPHER_IV`: This is to make sure tag IVs are
-the same so that we can search on them. It needs to be 16 bytes base 64 encoded.
-  - `Base64.encode64(SecureRandom.random_bytes(16))`.
 - `SHARING_TOKEN_CIPHER_IV`: This is to make sure sharing token IVs are
 the same so we can find posts from a public route parameter. It needs to be 16 bytes base 64 encoded.
   - `Base64.encode64(SecureRandom.random_bytes(16))`.

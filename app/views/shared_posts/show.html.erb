@@ -1,15 +1,20 @@
-<% if !@post.listed_publicly %>
-  <div class="banner banner-warning mb-20">
-    <div>This post is shared with you via a private link and is not meant to be publicly accessible.</div>
+<div class="container mt-100">
+  <% if !@post.listed_publicly %>
+    <div class="alert-info alert">
+      <div>This post is shared with you via a private link and is not meant to be publicly accessible.</div>
+    </div>
+  <% end %>
+
+  <div class="bg-grey pv-20 ph-30 mt-30">
+    <div class="flex flex-space-between">
+      <%= link_to '&#x2190; Back'.html_safe, shared_posts_path, class: "text-muted" %>
+    </div>
+
+    <div class="mt-30">
+      <h4 class="text-accent"><%= @post.decrypted_title %></h4>
+      <div class="text-muted text-small bold mt-8"><%= @post.created_at.strftime("%m&#183;%d&#183;%Y").html_safe %></div>
+
+      <p class="reading-content mt-30"><%= @post.decrypted_content %></p>
+    </div>
   </div>
-<% end %>
-
-<%= link_to '&#x2190; All posts'.html_safe, shared_posts_path, class: "dark" %>
-
-<div class="mt-10">
-  <h4><%= @post.decrypted_title %></h4>
-
-  <p class="text-whitespace"><%= @post.decrypted_content %></p>
-
-  <div><%= render "tags_list", post: @post %></div>
 </div>

@@ -3,26 +3,21 @@
   <head>
     <title>Journal</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Language" content="en">
 
     <%= csrf_meta_tags %>
-    <%= favicon_link_tag "favicon.ico" %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body class="public">
-    <div class="container pt-100">
-      <%= render "layouts/alerts" %>
-      <%= yield %>
-    </div>
+    <%= render "layouts/alerts" %>
+    <%= yield %>
 
-    <div class="footer mt-50 text-center">
-      <div class="container mt-15 fs-13">
-        Powered with &hearts; from
-        <%= link_to "inoda/journal", "https://github.com/inoda/journal", target: "_blank" %>
-        <div class="mt-15"></div>
-      </div>
+    <div class="footer">
+      Powered with &hearts; from <%= link_to "inoda/journal", "https://github.com/inoda/journal", target: "_blank" %>
     </div>
   </body>
 </html>
