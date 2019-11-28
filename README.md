@@ -1,9 +1,6 @@
-# Private Journal
-![art](./app/assets/images/readme/cover_art.png)
-
 ## About
 
-In a nutshell: a private online journal with sharing capabilities.
+In a nutshell: a private self-hosted journal with sharing capabilities.
 
 This project is an attempt to make myself journal more
 consistently. I find it much easier to gather my thoughts
@@ -11,52 +8,39 @@ with a keyboard. Having an online journal also means that
 I don't need to remember to bring it with me everywhere. The app
 is meant to be used by 1 person, and you can host easily your own instance.
 
+The app was designed by [Iana Noda](https://iananoda.com).
+
 ## Features
 
-- Basic CRUD for journal entries.
-- Sharing via secret link or public post. Access can be
-revoked at any time.
-- Customizable prompts to help you kick off journaling.
-- [SECURITY] Even though it is a 1 user app, you still set up a login with a username and password (both are hashed).
-- [SECURITY] All journal entries/titles/tokens/prompts are encrypted at the database level using
-[OpenSSL::Cipher](https://ruby-doc.org/stdlib-2.4.0/libdoc/openssl/rdoc/OpenSSL/Cipher.html).
-- [SECURITY] Email alert when a login occurs (optional).
+#### Dark mode
 
-![crud](./app/assets/images/readme/crud.png)
+#### Sharing capabilities
 
-![sharing](./app/assets/images/readme/sharing.png)
+#### Journaling prompts
 
-![alert](./app/assets/images/readme/alert.png)
+#### Data encryption
 
-![sharing](./app/assets/images/readme/prompts.png)
+#### Email alert when a login occurs (optional)
+
+## Installation
+
+- [Install with Homebrew](docs/homebrew_install.md)
+- Spin up an instance (for free) using the Heroku deploy button below. Heroku account is required.
+
+### Creating a user
+
+- `bundle exec rails c` to run Rails console
+- `User.create!(username: "...", password: "...")` The username and password will be hashed.
+- If you ever need to change your username/password: `User.first.update!(username: "...", password: "...")`
 
 ## Hosting your own
 
-I'd recommend using [Heroku](https://heroku.com) since it's super simple to deploy a
-Rails app and set up a SendGrid mailer.
+I'd recommend using [Heroku](https://heroku.com) since it's super simple (and free) to
+deploy a Rails app. Keep it awake with my [Heroku Pinger](https://github.com/inoda/heroku-pinger)!
+All you need to do once your instance is deployed is run
+`heroku run bundle exec rails c` to open the Rails console and create your user.
 
-### Set up environment variables
-
-###### Required:
-- `CIPHER_KEY`: Secret key used in encrypting. It needs to be 32 bytes base 64 encoded.
-  - `Base64.encode64(SecureRandom.random_bytes(32))`.
-- `SHARING_TOKEN_CIPHER_IV`: This is to make sure sharing token IVs are
-the same so we can find posts from a public route parameter. It needs to be 16 bytes base 64 encoded.
-  - `Base64.encode64(SecureRandom.random_bytes(16))`.
-
-###### For login email alerts:
-- `ALERT_EMAIL_RECIPIENT`: Where the alert gets sent to. If this
-is missing, emailing will be skipped.
-- `SENDGRID_USERNAME`: This is provided by Heroku with the SendGrid add-on.
-- `SENDGRID_PASSWORD`: This is provided by Heroku with the SendGrid add-on.
-- `MAILER_DOMAIN`: E.g. `"https://example.herokuapp.com"`
-
-### Create a user
-
-- Via Rails console: `User.create!(username: "...", password: "...")`
-  - If you ever need to change your username/password: `User.first.update!(username: "...", password: "...")`
-
-That's it! You're good to go.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/inoda/journal/tree/master)
 
 ## Usage and feedback
 Feel free to use this however you'd like! If you use this, credit
