@@ -3,8 +3,7 @@
 
 ## About
 
-In a nutshell: a private online journal. A more stripped down version of https://penzu.com (and you really own your data
-since you deploy your own instance).
+In a nutshell: a private online journal with sharing capabilities.
 
 This project is an attempt to make myself journal more
 consistently. I find it much easier to gather my thoughts
@@ -14,8 +13,7 @@ is meant to be used by 1 person, and you can host easily your own instance.
 
 ## Features
 
-- Basic CRUD for journal entries with a tagging
-system to categorize/search for entries.
+- Basic CRUD for journal entries.
 - Sharing via secret link or public post. Access can be
 revoked at any time.
 - Customizable prompts to help you kick off journaling.
