@@ -2,7 +2,6 @@
   "name": "Journal",
   "description": "A simple self-hosted journaling app",
   "repository": "https://github.com/inoda/journal",
-  "logo": "https://raw.githubusercontent.com/inoda/ontrack/master/app/assets/images/readme/logo-square.png",
   "keywords": ["journal"],
   "addons": [
     "sendgrid"
