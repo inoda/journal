@@ -37,6 +37,10 @@
   color: #b97925;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .reading-content {
   white-space: pre-wrap;
   font-family: georgia;
@@ -96,4 +100,8 @@
 .ph-30 {
   padding-right: 30px;
   padding-left: 30px;
+}
+
+.mw-80 {
+  min-width: 80px;
 }
