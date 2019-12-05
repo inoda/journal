@@ -1,5 +1,9 @@
 <div class="container mt-200">
-  <%= form_tag sessions_path, class: "six columns offset-by-three" do %>
+  <div class="text-center">
+    <%= image_tag "logo.svg", width: '280', class: 'max-w-100' %>
+  </div>
+
+  <%= form_tag sessions_path, class: "six columns offset-by-three mt-60" do %>
     <div class="input-group">
       <%= text_field_tag :username, nil, placeholder: "Username", autocomplete: "off" %>
     </div>

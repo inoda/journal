@@ -5,6 +5,10 @@
   </div>
 <% else %>
   <div class="container mt-100">
+    <div class="text-center">
+      <%= image_tag "logo.svg", width: '120', class: 'max-w-100 mb-20' %>
+    </div>
+
     <% @posts.each do |p| %>
       <%= link_to shared_post_path(p.decrypted_sharing_token) do %>
         <div class="mt-20 bg-grey p-20">

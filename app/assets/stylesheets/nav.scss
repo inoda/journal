@@ -1,5 +1,10 @@
 #navbar {
   margin-bottom: 130px;
+
+  .logo {
+    margin-bottom: -10px;
+  }
+
   .nav-items-expanded {
     display: none;
     z-index: 999;
