@@ -12,15 +12,46 @@ The app was designed by [Iana Noda](https://iananoda.com).
 
 ## Features
 
-#### Dark mode
+#### Easy on the eyes
+
+The best journaling often happens early in the morning or late at night. To
+accomodate this, the entire app has been designed in "dark mode".
+
+![posts](./app/assets/images/readme/posts.png)
 
 #### Sharing capabilities
 
-#### Journaling prompts
+After writing, sometimes we want to share our thoughts with someone else.
+You'll have the option of sharing publicly on a blog-like feed or
+sending a secret link to individuals you choose.
+
+![posts](./app/assets/images/readme/sharing.png)
+
+#### Customizable journaling prompts
+
+Journaling prompts can help kick-start writing on days where we just can't think
+of anything to write about. There is short list of prompts that will be seeded
+automatically but the list is completely customizable.
+
+![posts](./app/assets/images/readme/prompts.png)
 
 #### Data encryption
 
+Since journals can be very private, we want to be extra careful with its contents.
+All journal entry titles/content and prompts are encrypted at the database level
+using aes256 encryption.
+
+![posts](./app/assets/images/readme/encryption.png)
+
 #### Email alert when a login occurs (optional)
+
+As an optional additional layer of protection, get an email alert whenever there is a login event.
+
+#### Mobile friendly
+
+In case you want to journal while on the go, the entire app is mobile friendly.
+
+![posts](./app/assets/images/readme/mobile.png)
 
 ## Installation
 
