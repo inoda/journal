@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+if [ -z "${1+x}" ]
+then
+  bundle exec rake db:migrate
+  exec bundle exec puma -C config/puma.rb
+else
+  "$@"
+fi

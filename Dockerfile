@@ -19,5 +19,4 @@ RUN mkdir -p tmp/pids
 
 EXPOSE 3000
 
-ENTRYPOINT ["bundle", "exec"]
-CMD ["puma", "-C", "config/puma.rb"]
+ENTRYPOINT ["/app/run"]
