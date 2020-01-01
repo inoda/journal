@@ -117,4 +117,8 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
+
+  if ENV['SITE_DOMAIN'].present?
+    config.hosts << ENV['SITE_DOMAIN']
+  end
 end
