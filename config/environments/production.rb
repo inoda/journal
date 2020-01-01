@@ -121,4 +121,8 @@ Rails.application.configure do
   if ENV['SITE_DOMAIN'].present?
     config.hosts << ENV['SITE_DOMAIN']
   end
+
+  if ENV['NO_HTTPS_REDIRECT'].present?
+    config.ssl_options = { redirect: false }
+  end
 end
