@@ -15,6 +15,8 @@ RUN bundle install
 
 ADD . .
 
+RUN bundle exec rake assets:precompile
+
 RUN mkdir -p tmp/pids
 
 EXPOSE 3000
