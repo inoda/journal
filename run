@@ -2,6 +2,11 @@
 
 set -eu
 
+if [ -z "${RAILS_ENV+x}" ]
+then
+  export RAILS_ENV=production
+fi
+
 if [ -z "${1+x}" ]
 then
   bundle exec rake db:migrate
