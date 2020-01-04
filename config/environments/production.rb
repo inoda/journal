@@ -121,6 +121,4 @@ Rails.application.configure do
   if ENV['SITE_DOMAIN'].present?
     config.hosts << ENV['SITE_DOMAIN']
   end
-
-  config.ssl_options = { redirect: false }
 end
