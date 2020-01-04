@@ -79,7 +79,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+<% if ENV['DATABASE_URL'].present? %>
+  url: <%= ENV['DATABASE_URL'] %>
+<% else %>
   <<: *default
   database: journal_production
   username: journal
   password: <%= ENV['JOURNAL_DATABASE_PASSWORD'] %>
+<% end %>
