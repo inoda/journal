@@ -1,4 +1,5 @@
 #!/bin/sh
+# Entry point for the application in Docker.
 
 set -eu
 
