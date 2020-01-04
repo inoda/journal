@@ -11,8 +11,6 @@ start_server () {
 	eval "$(rbenv init -)"
 	echo "INSTALLING GEMS"
 	bundle install
-	echo "INSTALLING JS PACKAGES"
-	yarn install
 	echo "ENSURING DATABASE IS MIGRATED"
 	bundle exec rake db:migrate
 	echo "STARTING SERVER AT PORT 3000"
