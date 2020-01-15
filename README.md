@@ -57,6 +57,7 @@ In case you want to journal while on the go, the entire app is mobile friendly.
 
 - [Install with Homebrew](docs/homebrew_install.md)
 - [Run with Docker](docs/docker.md)
+- [Install on a VPS](docs/vps.md)
 - Spin up an instance (for free) using the Heroku deploy button below. Heroku account is required.
 
 ### Creating a user
