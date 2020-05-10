@@ -7,10 +7,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'listen', '~> 3.1.5' # Required by Rails
