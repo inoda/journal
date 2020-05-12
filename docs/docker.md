@@ -8,6 +8,8 @@ Use the provided Dockerfile, supplying the following environment variables:
   Example: `postgres://journal:pAsSwOrD@172.17.0.1/journal`.
 * `CIPHER_KEY`: Secret key used in encrypting. It needs to be 32 bytes base 64
   encoded. Generate with `Base64.encode64(SecureRandom.random_bytes(32))`.
+* `SHARING_TOKEN_CIPHER_IV`: This is to make sure sharing token IVs are
+the same so we can find posts from a public route parameter. It needs to be 16 bytes base 64 encoded. Generate with `Base64.encode64(SecureRandom.random_bytes(16))`.
 * `SECRET_KEY_BASE`: Secret key for verifying the integrity of signed cookies.
   Generate with `SecureRandom.alphanumeric(30)`.
 
