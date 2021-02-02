@@ -1,11 +1,11 @@
 <div class="container">
   <%= form_for @post do %>
     <div class="input-group">
-      <%= text_field_tag :title, @post.decrypted_title, placeholder: "Title", autocomplete: "off" %>
+      <%= text_field_tag :title, @post.decrypted_title, placeholder: "Title", autocomplete: "off", data: { autosave: !@post.id } %>
     </div>
 
     <div class="input-group">
-      <%= text_area_tag :content, @post.decrypted_content, placeholder: "Content", autocomplete: "off" %>
+      <%= text_area_tag :content, @post.decrypted_content, placeholder: "Content", autocomplete: "off", data: { autosave: !@post.id } %>
     </div>
 
     <div class="form-actions">

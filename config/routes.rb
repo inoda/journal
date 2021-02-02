@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :posts do
     put :share, on: :member
     put :unshare, on: :member
+    post :autosave, on: :collection
   end
 
   resources :prompts, only: [:create, :index, :destroy]

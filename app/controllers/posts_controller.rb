@@ -9,8 +9,9 @@ class PostsController < ApplicationController
   end
 
   def new
+    autosave = Autosave.first
     @random_prompt = Prompt.random
-    @post = Post.new
+    @post = Post.new(content: autosave&.decrypted_content, title: autosave&.decrypted_title)
   end
 
   def edit
@@ -19,10 +20,20 @@ class PostsController < ApplicationController
   def show
   end
 
+  def autosave
+    Autosave.first_or_create.update!(
+      title: params[:title],
+      content: params[:content]
+    )
+
+    head :ok
+  end
+
   def create
     @post = PostManager.create(params[:title], params[:content])
 
     if !@post.new_record?
+      Autosave.first&.destroy
       flash[:success] = "Entry saved"
       redirect_to posts_path
     else
