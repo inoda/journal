@@ -31,8 +31,8 @@ $ echo 'eval "$(rbenv init -)"' >> $HOME/.bash_profile
 $ git clone git://github.com/sstephenson/ruby-build.git $HOME/.rbenv/plugins/ruby-build
 $ source ~/.bash_profile
 
-$ rbenv install 2.6.5
-$ rbenv local 2.6.5
+$ rbenv install 2.6.6
+$ rbenv local 2.6.6
 $ rbenv rehash
 ```
 
