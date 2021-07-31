@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       end
 
       session[:logged_in] = true
+      session[:username] = params[:username]
     else
       flash[:error] = "Incorrect login"
     end
@@ -23,6 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:logged_in] = false
+    session[:username] = nil
     redirect_to :root
   end
 end

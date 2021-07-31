@@ -1,7 +1,7 @@
 class AuthManager
   def self.authenticate(username, password)
-    user = User.first
+    user = User.find_by(username: username)
     return false unless user
-    BCrypt::Password.new(user.password) == password && BCrypt::Password.new(user.username) == username
+    BCrypt::Password.new(user.password) == password
   end
 end

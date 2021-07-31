@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_02_02_053858) do
     t.binary "content_iv", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username", null: false
     t.binary "sharing_token"
     t.binary "sharing_token_iv"
     t.boolean "listed_publicly", default: false, null: false

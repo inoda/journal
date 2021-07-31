@@ -5,6 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.binary :content, null: false
       t.binary :title_iv, null: false
       t.binary :content_iv, null: false
+      t.string :username, null: false
 
       t.timestamps
     end

@@ -2,10 +2,16 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:edit, :show, :update, :destroy, :share, :unshare]
 
   def index
-    @posts_exist = Post.count > 0
-    posts = Post.all.order(created_at: :desc)
+    posts = Post.all.where(username: session[:username]) 
     posts = posts.where.not(sharing_token: nil) if params[:only_shared]
-    @posts = posts.paginate(params[:page])
+    @posts_exist = posts != nil
+
+    if posts == nil
+      @posts = []
+    else
+      posts = posts.order(created_at: :desc)
+      @posts = posts.paginate(params[:page])
+    end
   end
 
   def new
@@ -23,14 +29,15 @@ class PostsController < ApplicationController
   def autosave
     Autosave.first_or_create.update!(
       title: params[:title],
-      content: params[:content]
+      content: params[:content],
+      username: session[:username]
     )
 
     head :ok
   end
 
   def create
-    @post = PostManager.create(params[:title], params[:content])
+    @post = PostManager.create(session[:username], params[:title], params[:content])
 
     if !@post.new_record?
       Autosave.first&.destroy

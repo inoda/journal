@@ -1,6 +1,6 @@
 class PostManager
-  def self.create(title, content)
-    post = Post.new(title: title, content: content)
+  def self.create(username, title, content)
+    post = Post.new(username: username, title: title, content: content)
     post.save
     post
   end
