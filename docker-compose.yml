@@ -1,0 +1,38 @@
+networks:
+  journal:
+    internal: true
+  proxy:
+
+services:
+  journal:
+    build: https://github.com/inoda/journal.git#main
+    image: gh-inoda-journal
+    volumes:
+      - /media/jc/floppy/journal/data:/app:rw
+    environment:
+      - RAILS_ENV=production
+      - SITE_DOMAIN=domain.tld
+      - DATABASE_URL=postgres://replaceme:RePLAcEpAsS@journal-db/placeholder
+      - CIPHER_KEY=replaceme # openssl rand -base64 32
+      - SHARING_TOKEN_CIPHER_IV=replaceme # openssl rand -base64 16
+      - SECRET_KEY_BASE=sPoNgeB0bRePlACEmE # random alphanumerical
+    ports:
+      - 8080:3000
+    networks:
+      - proxy
+      - journal
+    restart: unless-stopped
+
+  journal-db:
+    image: postgres:alpine
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "replaceme"]
+    environment:
+      - POSTGRES_DB=placeholder
+      - POSTGRES_USER=replaceme
+      - POSTGRES_PASSWORD=RePLAcEpAsS
+    volumes:
+      - /media/jc/floppy/journal/postgres:/var/lib/postgresql/data:rw
+    networks:
+      - journal
+    restart: unless-stopped
