@@ -7,8 +7,6 @@ services:
   journal:
     build: https://github.com/inoda/journal.git#main
     image: gh-inoda-journal
-    volumes:
-      - /media/jc/floppy/journal/data:/app:rw
     environment:
       - RAILS_ENV=production
       - SITE_DOMAIN=domain.tld
@@ -32,7 +30,7 @@ services:
       - POSTGRES_USER=replaceme
       - POSTGRES_PASSWORD=RePLAcEpAsS
     volumes:
-      - /media/jc/floppy/journal/postgres:/var/lib/postgresql/data:rw
+      - ./journal/postgres:/var/lib/postgresql/data:rw
     networks:
       - journal
     restart: unless-stopped
