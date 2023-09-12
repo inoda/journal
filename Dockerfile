@@ -1,4 +1,4 @@
-from ruby:2.6.6
+from ruby:3.2.2
 
 RUN apt update && apt install -y nodejs
 
