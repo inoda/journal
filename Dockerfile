@@ -29,4 +29,4 @@ RUN mkdir -p tmp/pids
 COPY ./bin/docker-run /app/bin/docker-run
 RUN chmod +x /app/bin/docker-run
 
-ENTRYPOINT ['/app/bin/docker-run']
+ENTRYPOINT ["/app/bin/docker-run"]
