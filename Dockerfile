@@ -1,5 +1,4 @@
-#from ruby:3.1.4-bullseye
-FROM ruby:3-alpine3.18
+FROM ruby:3.1.4-bullseye
 
 RUN apt update && apt install -y nodejs
 
@@ -27,8 +26,9 @@ RUN bundle exec rake assets:precompile
 
 RUN mkdir -p tmp/pids
 
-RUN chmod 755 /app/bin/docker-run
-RUN chown 777 /app/bin/docker-run
+COPY ./bin/docker-run.sh /usr/local/bin/docker-run.sh
 
-CMD ["/bin/sh","/app/bin/docker-run"]
-ENTRYPOINT ["/app/bin/docker-run"]
+RUN chmod 755 /usr/local/bin/docker-run.sh
+
+#CMD ["/bin/sh","/usr/local/bin/docker-run.sh"]
+ENTRYPOINT ["/bin/sh","/usr/local/bin/docker-run.sh"]
