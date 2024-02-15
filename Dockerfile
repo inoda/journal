@@ -29,4 +29,5 @@ RUN mkdir -p tmp/pids
 RUN chmod 755 /app/bin/docker-run
 RUN chown 777 /app/bin/docker-run
 
-ENTRYPOINT ["/bin/bash","/app/bin/docker-run"]
+CMD ["/bin/sh","/app/bin/docker-run"]
+ENTRYPOINT ["/app/bin/docker-run"]
