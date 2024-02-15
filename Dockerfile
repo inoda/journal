@@ -1,4 +1,5 @@
-from ruby:3.1.4-bullseye
+#from ruby:3.1.4-bullseye
+FROM ruby:3-alpine3.18
 
 RUN apt update && apt install -y nodejs
 
