@@ -15,12 +15,12 @@ EXPOSE 3000
 ENV RAILS_SERVE_STATIC_FILES 1
 ENV RAILS_LOG_TO_STDOUT 1
 
-ADD Gemfile Gemfile.lock /app/
+COPY Gemfile Gemfile.lock /app/
 
 RUN bundle update --bundler
 RUN bundle install
 
-ADD . .
+COPY . .
 
 RUN bundle exec rake assets:precompile
 

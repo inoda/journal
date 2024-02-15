@@ -8,7 +8,8 @@ services:
     build: https://github.com/devMaFi/journal.git#bugfix-ruby_upgrade
     image: travel-journal
     volumes:
-      - /Users/martin/Development/journal/data:/app:rw
+      #- /Users/martin/Development/journal/data:/app:rw
+      - $PWD:/app:rw
     environment:
       - RAILS_ENV=production
       - SITE_DOMAIN=domain.tld
