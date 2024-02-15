@@ -25,3 +25,5 @@ ADD . .
 RUN bundle exec rake assets:precompile
 
 RUN mkdir -p tmp/pids
+
+ENTRYPOINT ['/bin/docker-run']
