@@ -27,6 +27,7 @@ RUN bundle exec rake assets:precompile
 RUN mkdir -p tmp/pids
 
 COPY ./bin/docker-run /app/bin/docker-run
-RUN chmod +x /app/bin/docker-run
+RUN chmod 755 /app/bin/docker-run
+RUN chown 777 /app/bin/docker-run
 
 ENTRYPOINT ["/app/bin/docker-run"]
