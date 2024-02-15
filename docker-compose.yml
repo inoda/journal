@@ -5,10 +5,10 @@ networks:
 
 services:
   journal:
-    build: https://github.com/inoda/journal.git#main
+    build: https://github.com/devMaFi/journal.git#bugfix-ruby_upgrade
     image: gh-inoda-journal
     volumes:
-      - /media/jc/floppy/journal/data:/app:rw
+      - /Users/martin/Development/journal/data:/app:rw
     environment:
       - RAILS_ENV=production
       - SITE_DOMAIN=domain.tld
@@ -17,7 +17,7 @@ services:
       - SHARING_TOKEN_CIPHER_IV=replaceme # openssl rand -base64 16
       - SECRET_KEY_BASE=sPoNgeB0bRePlACEmE # random alphanumerical
     ports:
-      - 8080:3000
+      - 3000:3000
     networks:
       - proxy
       - journal
@@ -32,7 +32,7 @@ services:
       - POSTGRES_USER=replaceme
       - POSTGRES_PASSWORD=RePLAcEpAsS
     volumes:
-      - /media/jc/floppy/journal/postgres:/var/lib/postgresql/data:rw
+      - /Users/martin/Development/journal/postgres:/var/lib/postgresql/data:rw
     networks:
       - journal
     restart: unless-stopped
