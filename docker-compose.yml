@@ -6,7 +6,7 @@ networks:
 services:
   journal:
     build: https://github.com/devMaFi/journal.git#bugfix-ruby_upgrade
-    image: gh-inoda-journal
+    image: travel-journal
     volumes:
       - /Users/martin/Development/journal/data:/app:rw
     environment:
@@ -17,7 +17,7 @@ services:
       - SHARING_TOKEN_CIPHER_IV=replaceme # openssl rand -base64 16
       - SECRET_KEY_BASE=sPoNgeB0bRePlACEmE # random alphanumerical
     ports:
-      - 3000:3000
+      - 3002:3000
     networks:
       - proxy
       - journal

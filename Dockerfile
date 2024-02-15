@@ -10,8 +10,6 @@ WORKDIR /app
 
 EXPOSE 3000
 
-ENTRYPOINT ["/app/bin/docker-run"]
-
 ENV RAILS_SERVE_STATIC_FILES 1
 ENV RAILS_LOG_TO_STDOUT 1
 
@@ -25,3 +23,5 @@ ADD . .
 RUN bundle exec rake assets:precompile
 
 RUN mkdir -p tmp/pids
+
+ENTRYPOINT ["/app/bin/docker-run"]
