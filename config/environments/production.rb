@@ -118,7 +118,10 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  if ENV['SITE_DOMAIN'].present?
-    config.hosts << ENV['SITE_DOMAIN']
+  #if ENV['SITE_DOMAIN'].present?
+  #  config.hosts << ENV['SITE_DOMAIN']
+  #end
+  Rails.application.configure do
+    config.hosts.clear
   end
 end
