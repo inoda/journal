@@ -24,8 +24,7 @@ COPY . .
 
 RUN bundle exec rake assets:precompile
 
-RUN mkdir -p tmp/pids
-RUN touch tmp/pids/server.pid
+RUN mkdir -p /tmp/pids
 
 COPY ./bin/docker-run.sh /usr/local/bin/docker-run.sh
 
