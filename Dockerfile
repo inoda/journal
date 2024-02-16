@@ -10,8 +10,6 @@ WORKDIR /app
 
 EXPOSE 3000
 
-#ENTRYPOINT ['/app/bin/docker-run']
-
 ENV RAILS_SERVE_STATIC_FILES 1
 ENV RAILS_LOG_TO_STDOUT 1
 
@@ -30,5 +28,4 @@ COPY ./bin/docker-run.sh /usr/local/bin/docker-run.sh
 
 RUN chmod 755 /usr/local/bin/docker-run.sh
 
-#CMD ["/bin/sh","/usr/local/bin/docker-run.sh"]
 ENTRYPOINT ["/bin/sh","/usr/local/bin/docker-run.sh"]

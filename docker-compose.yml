@@ -8,15 +8,14 @@ services:
     build: https://github.com/devMaFi/journal.git#bugfix-ruby_upgrade
     image: travel-journal
     volumes:
-      #- /Users/martin/Development/journal/data:/app:rw
       - $PWD:/app:rw
     environment:
       - RAILS_ENV=production
-      - SITE_DOMAIN=domain.tld
-      - DATABASE_URL=postgres://replaceme:RePLAcEpAsS@journal-db/placeholder
-      - CIPHER_KEY=replaceme # openssl rand -base64 32
-      - SHARING_TOKEN_CIPHER_IV=replaceme # openssl rand -base64 16
-      - SECRET_KEY_BASE=sPoNgeB0bRePlACEmE # random alphanumerical
+      - SITE_DOMAIN='mydomain.ltd'
+      - DATABASE_URL=postgres://journal:RePLAcEpAsS@journal-db/journal_db
+      - CIPHER_KEY='changeit' # openssl rand -base64 32
+      - SHARING_TOKEN_CIPHER_IV='change t' # openssl rand -base64 16
+      - SECRET_KEY_BASE='changeit' # random alphanumerical
     ports:
       - 3002:3000
     networks:
@@ -27,13 +26,13 @@ services:
   journal-db:
     image: postgres:alpine
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "replaceme"]
+      test: ["CMD", "pg_isready", "-U", "journal"]
     environment:
-      - POSTGRES_DB=placeholder
-      - POSTGRES_USER=replaceme
+      - POSTGRES_DB=journal_db
+      - POSTGRES_USER=journal
       - POSTGRES_PASSWORD=RePLAcEpAsS
     volumes:
-      - /Users/martin/Development/journal/postgres:/var/lib/postgresql/data:rw
+      - $PWD/postgres:/var/lib/postgresql/data:rw
     networks:
       - journal
     restart: unless-stopped

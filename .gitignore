@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore postgres folder
+/postgres/
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
