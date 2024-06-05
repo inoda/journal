@@ -1,3 +1,5 @@
+**:warning: I am no longer maintaining this repository.**
+
 ## About
 
 In a nutshell: a private self-hosted journal with sharing capabilities.
